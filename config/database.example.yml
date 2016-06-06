@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: 'myuser'
+  password: 'mypass'
+
+development:
+  <<: *default
+  database: portfolio_development
+
+test:
+  <<: *default
+  database: portfolio_test
