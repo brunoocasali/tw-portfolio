@@ -1,6 +1,0 @@
-en:
-  enumerations:
-    project_status:
-      working: "Working"
-      waiting_payment: "Waiting_payment"
-      lauched: "Lauched"

@@ -1,6 +1,0 @@
-en:
-  enumerations:
-    user_role:
-      admin: "Admin"
-      client: "Client"
-      print_requestor: "Print_requestor"

@@ -1,6 +1,0 @@
-en:
-  enumerations:
-    session_status:
-      waiting: "Waiting"
-      finished: "Finished"
-      canceled: "Canceled"

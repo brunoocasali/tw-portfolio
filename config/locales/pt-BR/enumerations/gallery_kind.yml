@@ -1,0 +1,6 @@
+pt-BR:
+  enumerations:
+    gallery_kind:
+      baby_shower: 'Chá de Bebê'
+      pregnant_session: 'Ensaio de Gestante'
+      other: 'Outro'

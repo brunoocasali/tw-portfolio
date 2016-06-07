@@ -1,3 +1,3 @@
 class ProjectStatus < EnumerateIt::Base
-  associate_values :working, :waiting_payment, :lauched
+  associate_values working: 1, waiting_payment: 2, lauched: 3
 end

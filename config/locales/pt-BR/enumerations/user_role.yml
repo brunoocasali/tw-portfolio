@@ -1,0 +1,6 @@
+pt-BR:
+  enumerations:
+    user_role:
+      admin: 'Administrador'
+      client: 'Cliente'
+      print_requestor: 'Solicitante de Impressão'

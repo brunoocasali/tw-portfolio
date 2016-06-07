@@ -1,0 +1,6 @@
+pt-BR:
+  enumerations:
+    session_status:
+      waiting: 'Esperando'
+      finished: 'Finalizado'
+      canceled: 'Cancelado'

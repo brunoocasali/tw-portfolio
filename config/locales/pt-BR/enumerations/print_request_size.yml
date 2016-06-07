@@ -1,0 +1,6 @@
+pt-BR:
+  enumerations:
+    print_request_size:
+      three_per_four: '3x4'
+      ten_per_ten: '10x10'
+      eight_per_ten: '8x10'

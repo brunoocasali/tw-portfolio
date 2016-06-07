@@ -1,0 +1,8 @@
+pt-BR:
+  enumerations:
+    print_request_status:
+      requested: 'Requisitado'
+      processed: 'Processado'
+      confirmed: 'Confirmado'
+      finished: 'Finalizado'
+      waiting_payment: 'Aguardando Pagamento'
