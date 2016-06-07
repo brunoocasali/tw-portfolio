@@ -1,0 +1,8 @@
+en:
+  enumerations:
+    print_request_status:
+      requested: "Requested"
+      processed: "Processed"
+      confirmed: "Confirmed"
+      finished: "Finished"
+      waiting_payment: "Waiting_payment"

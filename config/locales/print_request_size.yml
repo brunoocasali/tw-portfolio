@@ -1,0 +1,6 @@
+en:
+  enumerations:
+    print_request_size:
+      three_per_four: "Three_per_four"
+      ten_per_ten: "Ten_per_ten"
+      eight_per_ten: "Eight_per_ten"

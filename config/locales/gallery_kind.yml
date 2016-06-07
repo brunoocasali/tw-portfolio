@@ -1,0 +1,6 @@
+en:
+  enumerations:
+    gallery_kind:
+      baby_shower: "Baby_shower"
+      pregnant_session: "Pregnant_session"
+      other: "Other"
