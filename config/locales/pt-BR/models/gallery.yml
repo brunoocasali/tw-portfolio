@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      gallery:
+        one: Galeria
+        other: Galerias
+    attributes:
+      gallery:
+        name: Nome
+        session: Ensaio
+        description: Descrição
+        kind: Tipo de Ensaio

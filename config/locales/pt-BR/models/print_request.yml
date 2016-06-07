@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      print_request:
+        one: Requisição de Impressão
+        other: Requisições de Impressões
+    attributes:
+      print_request:
+        medium: Mídia
+        quantity: Quantidade
+        size: Tamanho
+        status: Situação
+        requestor: Solicitante

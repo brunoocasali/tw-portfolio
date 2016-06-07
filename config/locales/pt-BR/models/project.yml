@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      project:
+        one: Projeto
+        other: Projetos
+    attributes:
+      project:
+        status: Situação
+        code: Código do Ensaio
+        name: Nome
+        client: Cliente

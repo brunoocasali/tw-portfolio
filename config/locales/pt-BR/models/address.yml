@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      address:
+        one: Endereço
+        other: Endereços
+    attributes:
+      address:
+        nick: Apelido
+        reference: Referência
+        street: Rua
+        zipcode: CEP
+        city: Cidade
+        state: Estado

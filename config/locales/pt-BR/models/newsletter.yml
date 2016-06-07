@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      newsletter:
+        one: Boletim Informativo
+        other: Boletins Informativos
+    attributes:
+      newsletter:
+        email: Email
+        name: Nome
+        project: Projeto

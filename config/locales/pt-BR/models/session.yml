@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      session:
+        one: Ensaio
+        other: Ensaios
+    attributes:
+      session:
+        date_at: Data
+        project: Projeto
+        status: Situação
+        address: Local

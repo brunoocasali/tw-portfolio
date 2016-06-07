@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      medium:
+        one: Mídia
+        other: Mídias
+    attributes:
+      medium:
+        filename: Arquivo
+        gallery: Galeria
+        show: Destaque
+        subtitle: Legenda
