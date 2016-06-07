@@ -19,6 +19,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.inet     :current_sign_in_ip
       t.inet     :last_sign_in_ip
 
+      t.integer  :role,  index: true
+      t.string   :phone
+
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
