@@ -27,10 +27,12 @@ module Portfolio
     config.active_record.raise_in_transactional_callbacks = true
 
     config.generators do |g|
+      g.hidden_namespaces << :test_unit << :erb << :mongoid << :less << :sass << :scss << :js << :coffee << :active_record
       g.view_specs      false
       g.helper_specs    false
       g.assets          false
       g.helper          false
+      g.template_engine :slim
     end
   end
 end
