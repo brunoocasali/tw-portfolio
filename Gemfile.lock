@@ -97,6 +97,7 @@ GEM
       warden (~> 1.2.3)
     devise-bootstrap-views (0.0.8)
     devise-i18n (1.0.1)
+    dotenv (2.1.1)
     enumerate_it (1.2.9)
       activesupport (>= 3.0.0)
     erubis (2.7.0)
@@ -377,6 +378,7 @@ DEPENDENCIES
   devise
   devise-bootstrap-views
   devise-i18n
+  dotenv
   enumerate_it
   fittextjs_rails
   fog
