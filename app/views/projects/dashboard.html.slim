@@ -1,1 +1,25 @@
-h2 = "#{tm(Project)}: #{@project.name}"
+h2.text-center = raw("#{tm(Project)}: <b>#{@project.name}</b>")
+
+.col-sm-10.col-sm-offset-1
+  .row
+    .col-sm-6
+      = link_to 'newsletters', class: 'btn btn-danger btn-monster btn-block' do
+        span.fa.fa-users aria-hidden="true" &nbsp;
+        = t('.newsletter')
+
+    .col-sm-6
+      = link_to 'newsletters', class: 'btn btn-danger btn-monster btn-block' do
+        span.fa.fa-calendar aria-hidden="true" &nbsp;
+        = tmp(Session)
+
+  br /
+
+  .row
+    .col-sm-6
+      = link_to 'newsletters', class: 'btn btn-danger btn-monster btn-block' do
+        span.fa.fa-picture-o aria-hidden="true" &nbsp;
+        = tmp(Gallery)
+    .col-sm-6
+      = link_to 'newsletters', class: 'btn btn-danger btn-monster btn-block' do
+        span.fa.fa-print aria-hidden="true" &nbsp;
+        = tm(PrintRequest)
