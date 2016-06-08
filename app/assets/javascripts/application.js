@@ -17,4 +17,13 @@
 //= require wow
 //= require fittext
 //= require image-picker
-//= require_tree .
+//= require_self
+
+$('.alert').fadeTo(3000, 500).slideUp(500, function(){
+  $('#bootstrap-alert').alert('close');
+});
+
+$('.image-picker').imagepicker({
+  hide_select : true,
+  show_label  : false
+})

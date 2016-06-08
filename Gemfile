@@ -48,7 +48,6 @@ gem 'fog'
 
 group :development, :test do
   gem 'pry-rails'
-  gem 'spring'
 
   gem 'dotenv'
 end

@@ -8,4 +8,12 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w( grayscale.js grayscale.css admin.css devise.css )
+
+# $assets = Dir[Rails.root.join('app/controllers/**/*_controller.rb')].map { |path| path.match(/(\w+)_controller.rb/); $1 }.compact
+$assets = ['admin', 'grayscale', 'devise']
+
+$assets.freeze
+
+$assets.flatten.each do |controller|
+  Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.css"]
+end

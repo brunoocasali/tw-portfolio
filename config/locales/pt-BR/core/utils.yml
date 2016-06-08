@@ -1,0 +1,11 @@
+pt-BR:
+  back: 'Voltar'
+  new: 'Novo %{m}'
+  new_a: 'Nova %{m}'
+  list: 'Listando %{m}'
+  edit: 'Editar %{m}'
+  show: 'Exibindo Detalhes do %{m} #%{id}'
+  show_btn: 'Detalhes'
+  edit_btn: 'Editar'
+  destroy: 'Excluir'
+  not_found: 'Nenhum item foi encontrado!'
