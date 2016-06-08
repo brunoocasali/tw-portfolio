@@ -2,9 +2,57 @@ doctype html
 html
   head
     title
-      | Portfolio
-    = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
+      = "T. Wacelkoski - Portfólio: #{t("#{controller_name.underscore}.title")}"
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    link[href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-OiWEn8WwtH+084y4yW2YhhH6z/qTSecHZuk/eiWtnvLtU+Z8lpDsmhOKkex6YARr" crossorigin="anonymous"]
+    = favicon_link_tag 'icon.png'
     = csrf_meta_tags
+    = stylesheet_link_tag 'admin'
+
+    javascript:
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-78237228-1', 'auto');
+      ga('send', 'pageview');
+
   body
-    = yield
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed aria-expanded="false" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand href="/"
+            i.fa.fa-camera
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li class=("nav-item #{active_class(root_path)}")
+              a.nav-link href="/" Home
+            li class=("nav-item #{active_class('leads')}")
+              a.nav-link href="/leads" Leads
+            li class=("nav-item #{active_class('media')}")
+              a.nav-link href="/media" Mídias
+            li class=("nav-item #{active_class('delivery_contents')}")
+              a.nav-link href="/delivery_contents" Conteúdos
+            li class=("nav-item #{active_class('deliveries')}")
+              a.nav-link href="/deliveries/new" Envios
+          ul class=("nav navbar-nav navbar-right #{active_class(edit_user_registration_path)}")
+            li.nav-item
+              a.nav-link href="/users/edit" Perfil
+            li.nav-item
+              = link_to('Sair', destroy_user_session_path, method: :delete)
+
+    .container
+      = notices
+      = yield
+    / footer.footer
+      .container
+        p.text-muted Copyright Poolíticos © 2016
+
+  = javascript_include_tag 'application'
