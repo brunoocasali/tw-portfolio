@@ -12,6 +12,8 @@ html
     = favicon_link_tag 'icon.png'
     = csrf_meta_tags
 
+    = stylesheet_link_tag 'admin'
+
   body
     nav.navbar.navbar-default.navbar-fixed-top
       .container
@@ -27,14 +29,8 @@ html
           ul.nav.navbar-nav
             li class=("nav-item #{active_class(root_path)}")
               a.nav-link href="/" Home
-            li class=("nav-item #{active_class('leads')}")
-              a.nav-link href="/leads" Leads
-            li class=("nav-item #{active_class('media')}")
-              a.nav-link href="/media" Mídias
-            li class=("nav-item #{active_class('delivery_contents')}")
-              a.nav-link href="/delivery_contents" Conteúdos
-            li class=("nav-item #{active_class('deliveries')}")
-              a.nav-link href="/deliveries/new" Envios
+            li class=("nav-item #{active_class('contacts')}")
+              a.nav-link href="/contacts" Contatos
           ul class=("nav navbar-nav navbar-right #{active_class(edit_user_password_path)}")
             li.nav-item
               a.nav-link href="/users/edit" Perfil

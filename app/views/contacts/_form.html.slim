@@ -1,0 +1,9 @@
+= simple_form_for(@contact) do |f|
+  .form-inputs
+    .row
+      .form-group.col-sm-6
+        = f.input :name
+      .form-group.col-sm-6
+        = f.input :email
+      .form-group.col-sm-12
+        = f.input :message, input_html: { rows: 5 }

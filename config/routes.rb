@@ -12,5 +12,13 @@ Rails.application.routes.draw do
 
   resources :contacts, only: [:create, :show, :index, :delete]
 
+  resources :clients do
+    get :dashboard, on: :member
+
+    resources :projects do
+      get :dashboard, on: :member
+    end
+  end
+
   root 'home#index' # to: redirect('/users/sign_in')
 end

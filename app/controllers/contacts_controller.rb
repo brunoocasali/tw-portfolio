@@ -2,14 +2,16 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :destroy]
 
   def index
-    @contacts = Contact.page(params[:page])
+    @contacts = Contact.order(status: :asc).page(params[:page])
 
     respond_with(@contacts)
   end
 
   def show
-    @contact.read!
-    @contact.save!
+    if @contact.unread?
+      @contact.read!
+      @contact.save!
+    end
 
     respond_with(@contact)
   end
