@@ -15,23 +15,21 @@ gem 'delayed_job_active_record'
 gem 'devise'
 gem 'devise-i18n'
 
-group :assets do
-  # front end
-  gem 'uglifier', '>= 1.3.0'
-  gem 'jquery-rails'
-  gem 'sass-rails'
-  gem 'bootstrap-sass', '3.1.0'
-  gem 'twitter-bootstrap-rails'
-  gem 'font-awesome-rails'
-  gem 'animate-rails'
-  gem 'jquery-easing-rails'
-  gem 'wow-rails'
-  gem 'fittextjs_rails'
-  gem 'compass-rails'
-  gem 'image-picker-rails'
-  gem 'devise-bootstrap-views'
-  gem 'coffee-rails'
-end
+# front end
+gem 'uglifier', '>= 1.3.0'
+gem 'jquery-rails'
+gem 'sass-rails'
+gem 'bootstrap-sass', '3.1.0'
+gem 'twitter-bootstrap-rails'
+gem 'font-awesome-rails'
+gem 'animate-rails'
+gem 'jquery-easing-rails'
+gem 'wow-rails'
+gem 'fittextjs_rails'
+gem 'compass-rails'
+gem 'image-picker-rails'
+gem 'devise-bootstrap-views'
+gem 'coffee-rails'
 
 # templating
 gem 'simple_form'

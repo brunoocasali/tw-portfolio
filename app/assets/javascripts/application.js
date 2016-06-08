@@ -12,4 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
+//= require jquery.easing
+//= require wow
+//= require fittext
+//= require image-picker
 //= require_tree .
