@@ -3,12 +3,12 @@ h2.text-center = raw("#{tm(Project)}: <b>#{@project.name}</b>")
 .col-sm-10.col-sm-offset-1
   .row
     .col-sm-6
-      = link_to 'newsletters', class: 'btn btn-danger btn-monster btn-block' do
+      = link_to client_project_newsletters_path(@client, @project), class: 'btn btn-danger btn-monster btn-block' do
         span.fa.fa-users aria-hidden="true" &nbsp;
-        = t('.newsletter')
+        = tmp(Newsletter)
 
     .col-sm-6
-      = link_to 'newsletters', class: 'btn btn-danger btn-monster btn-block' do
+      = link_to client_project_sessions_path(@client, @project), class: 'btn btn-danger btn-monster btn-block' do
         span.fa.fa-calendar aria-hidden="true" &nbsp;
         = tmp(Session)
 

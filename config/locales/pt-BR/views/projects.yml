@@ -1,7 +1,5 @@
 pt-BR:
   projects:
-    dashboard:
-      newsletter: 'Espectadores'
     index:
       buttons:
         manage: Gerenciar
