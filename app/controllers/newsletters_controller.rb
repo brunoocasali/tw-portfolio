@@ -1,0 +1,33 @@
+class NewslettersController < ApplicationController
+  before_action :set_client
+  before_action :set_project
+  before_action :set_newsletter, only: :create
+
+  def index
+    @newsletters = Newsletter.all
+  end
+
+  def create
+    @newsletter = Newsletter.new(newsletter_params)
+
+    respond_with @newsletter, location: client_project_newsletters_path(@client, @project)
+  end
+
+  private
+
+  def set_client
+    @client = Newsletter.find(params[:client_id])
+  end
+
+  def set_project
+    @project = @client.project.find(params[:project_id])
+  end
+
+  def set_newsletter
+    @newsletter = Newsletter.find(params[:id])
+  end
+
+  def newsletter_params
+    params.require(:newsletter).permit(:name, :email, :project_id)
+  end
+end

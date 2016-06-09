@@ -1,5 +1,5 @@
 h2
-  = t 'list', m: tmp(Project)
+  = t('list', m: tmp(Project))
   = link_to t('new', m: tm(Project)), new_client_project_url(@client), class: 'btn btn-primary pull-right'
 
 = paginate @projects

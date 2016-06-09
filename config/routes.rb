@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :projects, except: :show do
       get :dashboard, on: :member
 
-      resources :newsletters
+      resources :newsletters, except: [:new, :edit, :update, :show]
       resources :sessions
       resources :galleries
       resources :print_requests
