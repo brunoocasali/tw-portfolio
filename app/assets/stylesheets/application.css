@@ -12,5 +12,6 @@
  *
  *= require bootstrap
  *= require font-awesome
+ *= require fullcalendar
  *= require_self
  */

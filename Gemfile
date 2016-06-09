@@ -30,6 +30,8 @@ gem 'compass-rails'
 gem 'image-picker-rails'
 gem 'devise-bootstrap-views'
 gem 'coffee-rails'
+gem 'momentjs-rails'
+gem 'fullcalendar-rails'
 
 # templating
 gem 'simple_form'

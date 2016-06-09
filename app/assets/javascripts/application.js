@@ -15,6 +15,8 @@
 //= require bootstrap
 //= require jquery.easing
 //= require angular
+//= require moment
+//= require fullcalendar
 //= require wow
 //= require fittext
 //= require image-picker
