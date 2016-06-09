@@ -43,6 +43,7 @@ gem 'country_select'
 gem 'enumerate_it'
 gem 'responders'
 gem 'brazilian-rails'
+gem 'jbuilder'
 
 # uploading
 gem 'carrierwave'

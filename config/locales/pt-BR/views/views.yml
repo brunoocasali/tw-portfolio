@@ -11,6 +11,9 @@ pt-BR:
   clients:
     title: 'Clientes'
 
+  sessions:
+    title: 'Ensaios'
+
   newsletters:
     title: 'Espectadores'
 

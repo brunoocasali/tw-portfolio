@@ -1,25 +1,27 @@
 class SessionsController < ApplicationController
+  before_action :set_client
+  before_action :set_project
   before_action :set_session, only: [:show, :edit, :update, :destroy]
 
   def index
-    @sessions = Session.all
+    @sessions = @project.sessions.all
+    set_new_session
+
+    respond_with(@sessions, location: client_project_sessions_path(@client, @project))
   end
 
   def show; end
 
-  def new
-    @session = Session.new
-  end
-
   def edit; end
 
   def create
-    @session = Session.new(session_params)
+    @session = @project.sessions.build(session_params)
+    @session.waiting!
 
     if @session.save
-      redirect_to @session, notice: 'Session was successfully created.'
+      redirect_to client_project_sessions_path(@client, @project)
     else
-      render :new
+      render :index
     end
   end
 
@@ -38,11 +40,30 @@ class SessionsController < ApplicationController
 
   private
 
+  def set_new_session
+    params = { status: SessionStatus::WAITING, start_at: Time.zone.now, finish_at: Time.zone.now + 2.hours }
+
+    @session = @project.sessions.build(params)
+    @session.build_address
+  end
+
+  def set_client
+    @client = User.client.find(params[:client_id])
+  end
+
+  def set_project
+    @project = @client.projects.find(params[:project_id])
+  end
+
   def set_session
-    @session = Session.find(params[:id])
+    @session = @project.sessions.find(params[:id])
   end
 
   def session_params
-    params[:session]
+    attributes = {
+      address_attributes: [:nick, :reference, :city, :state, :zipcode, :street]
+    } unless params[:session] && params[:session][:address_id] != 0
+
+    params.require(:session).permit(:start_at, :finish_at, :address_id, :status, attributes)
   end
 end

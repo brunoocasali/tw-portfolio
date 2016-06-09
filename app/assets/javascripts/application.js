@@ -17,6 +17,7 @@
 //= require angular
 //= require moment
 //= require fullcalendar
+//= require fullcalendar/lang-all
 //= require wow
 //= require fittext
 //= require image-picker
@@ -31,4 +32,53 @@ $('.alert').fadeTo(3000, 500).slideUp(500, function(){
 $('.image-picker').imagepicker({
   hide_select : true,
   show_label  : false
-})
+});
+
+$(document).ready(function() {
+    var input = $('.mask');
+    input.mask(input.data('maskFormat'), {reverse: input.data('maskReverse'), placeholder: input.data('maskPlaceholder'), mask_maxlength: input.data('maskMaxlength')});
+});
+
+$('#calendar_sessions').fullCalendar({
+  events: 'sessions.json',
+  startParam: 'start_at',
+  endParam: 'finish_at',
+  lang: 'pt-br',
+  header: {
+      left: 'prev,next today myCustomButton',
+      center: 'title',
+      right: 'month,agendaWeek,agendaDay'
+  },
+  eventClick:  function(event, jsEvt, view) {
+    // para listar no modal.
+
+    $('#modalTitle').html(event.title);
+    $('#modalBody').html(event.description);
+    $('#eventUrl').attr('href', event.url);
+    $('#fullCalModal').modal();
+  },
+  dayClick: function(event, jsEvt, view) {
+    // para criar um evento
+
+    // $('#modalTitle').html(event.title);
+    // $('#modalBody').html(event.description);
+    // $('#eventUrl').attr('href',event.url);
+    $('#fullCalCreateModal').modal();
+  }
+});
+
+$('.fc-toolbar').find('.fc-button-group').addClass('btn-group');
+$('.fc-toolbar').find('.fc-button').addClass('btn btn-danger').removeClass('fc-prev-button fc-button fc-state-default fc-corner-left fc-next-button fc-corner-right');
+$('.fc-toolbar').find('.fc-prev-button').html($('<span />').attr('class', 'glyphicon glyphicon-chevron-left'));
+$('.fc-toolbar').find('.fc-next-button').html($('<span />').attr('class', 'glyphicon glyphicon-chevron-right'));
+
+
+$("#session_address_id").change(function(){
+  var id = $(this).find("option:selected").attr('value');
+
+  if (id == 0){
+    $('#address_form').removeClass('hide');
+  } else {
+    $('#address_form').addClass('hide');
+  }
+});

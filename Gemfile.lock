@@ -264,6 +264,9 @@ GEM
       railties (>= 3.0)
     inflecto (0.0.2)
     ipaddress (0.8.3)
+    jbuilder (2.5.0)
+      activesupport (>= 3.0.0, < 5.1)
+      multi_json (~> 1.2)
     jquery-easing-rails (0.0.2)
       railties (>= 3.1.0)
     jquery-rails (4.1.1)
@@ -428,6 +431,7 @@ DEPENDENCIES
   forgery
   fullcalendar-rails
   image-picker-rails
+  jbuilder
   jquery-easing-rails
   jquery-rails
   kaminari

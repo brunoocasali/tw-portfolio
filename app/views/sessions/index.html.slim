@@ -1,2 +1,56 @@
-h1 Listing sessions
+h2
+  = t('list', m: tmp(Session))
 
+#fullCalModal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal" type="button"
+          span aria-hidden="true" &times;
+          span.sr-only close
+        h4#modalTitle.modal-title
+      #modalBody.modal-body
+
+
+#fullCalCreateModal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal" type="button"
+          span aria-hidden="true" &times;
+          span.sr-only close
+        h4#modalTitle.modal-title
+      #modalBody.modal-body
+
+= simple_form_for(@session, url: client_project_sessions_path(@client, @project), method: :post) do |f|
+  = f.error_notification
+  .row
+    .col-sm-2
+      = f.input :start_at, as: :date_time_picker
+    .col-sm-2
+      = f.input :finish_at, as: :date_time_picker
+    .col-sm-3
+      = f.association :address, collection: [Address.all, Address.new(id: 0, nick: 'Ou crie um novo!')].flatten, include_blank: 'Selecione um local', label_method: :nick
+
+  #address_form.hide
+    = f.simple_fields_for :address, @session.address do |fa|
+      .row
+        .col-sm-12.hide#alert_cep
+          .alert.alert-dismissible.alert-danger
+            | Ops! o CEP informado é inválido... Não encontramos nada sobre ele!
+        .col-sm-2
+          = fa.input :zipcode, as: :zip_code, input_html: { onblur: 'loadCEP()' }
+        .col-sm-3
+          = fa.input :street
+        .col-sm-2
+          = fa.input :city
+        .col-sm-1
+          = fa.input :state
+        .col-sm-2
+          = fa.input :reference, input_html: { placeholder: 'Ao lado do prédio azul - n° 54' }
+        .col-sm-2
+          = fa.input :nick, input_html: { placeholder: 'Minha Casa' }
+
+  = f.button :submit
+
+#calendar_sessions
