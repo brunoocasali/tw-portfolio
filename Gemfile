@@ -51,6 +51,7 @@ group :development, :test do
   gem 'pry-rails'
 
   gem 'dotenv'
+  gem 'forgery'
 end
 
 group :production do

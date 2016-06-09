@@ -250,6 +250,7 @@ GEM
       nokogiri (~> 1.5, >= 1.5.11)
     font-awesome-rails (4.6.2.0)
       railties (>= 3.2, < 5.1)
+    forgery (0.6.0)
     formatador (0.2.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -416,6 +417,7 @@ DEPENDENCIES
   fittextjs_rails
   fog
   font-awesome-rails
+  forgery
   image-picker-rails
   jquery-easing-rails
   jquery-rails

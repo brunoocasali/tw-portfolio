@@ -11,5 +11,8 @@ pt-BR:
   clients:
     title: 'Clientes'
 
+  newsletters:
+    title: 'Espectadores'
+
   projects:
     title: 'Projetos'

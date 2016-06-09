@@ -2,10 +2,11 @@ pt-BR:
   activerecord:
     models:
       newsletter:
-        one: Boletim Informativo
-        other: Boletins Informativos
+        one: Espectador
+        other: Espectadores
     attributes:
       newsletter:
         email: Email
         name: Nome
         project: Projeto
+        created_at: 'Criado em'
