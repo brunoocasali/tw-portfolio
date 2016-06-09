@@ -21,3 +21,8 @@ h2.text-center = raw("#{tm(Project)}: <b>#{@project.name}</b>")
       = link_to 'newsletters', class: 'btn btn-danger btn-monster btn-block' do
         span.fa.fa-print aria-hidden="true" &nbsp;
         = tm(PrintRequest)
+
+  .row(style="margin-top: 50px")
+    .col-sm-6
+      = link_to t('back'), :back, class: 'btn btn-small btn-default'
+      = link_to t('new', m: tm(Project)), new_client_project_url(@client), class: 'btn btn-small btn-default'

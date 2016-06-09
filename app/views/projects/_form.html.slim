@@ -1,7 +1,15 @@
-= simple_form_for(@project) do |f|
-  = f.error_notification
+.col-sm-8
+  = simple_form_for(@project, url: client_projects_url(@client)) do |f|
+    = f.error_notification
 
-  .form-inputs
+    .form-inputs
+      .row
+        .form-group.col-sm-12
+          = f.input :name
+        .form-group.col-sm-12
+          = f.input :code, input_html: { 'ng-model': 'url' }
+          small Este é o link por onde os visitantes acessaram as fotografias. Quanto menor melhor! &nbsp;
+          small.text-danger#preview http://wacelkoski.com/{{url}}
 
-  .form-actions
-    = f.button :submit
+    .form-actions
+      = f.button :submit

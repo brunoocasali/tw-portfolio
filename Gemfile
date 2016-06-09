@@ -59,4 +59,5 @@ end
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-jQuery-Mask-Plugin', '~> 1.14.0'
+  gem 'rails-assets-angular'
 end

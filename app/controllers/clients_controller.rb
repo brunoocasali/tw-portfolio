@@ -26,7 +26,6 @@ class ClientsController < ApplicationController
   def create
     @client = User.new(client_params)
     @client.client!
-    binding.pry
     @client.save
 
     respond_with @client, location: clients_path

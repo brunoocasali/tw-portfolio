@@ -24,7 +24,7 @@ table.table.table-hover
           - if size == 0
             span.label.label-default = "nenhum #{tm(Project).downcase}"
           - elsif size == 1
-            span.label.label-default = "1 #{tm(Project).downcase}"
+            span.label.label-info = "1 #{tm(Project).downcase}"
           - else
             span.label.label-success = "#{size} #{tmp(Project).downcase}"
         td.text-center(width='12%')

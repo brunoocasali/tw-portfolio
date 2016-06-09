@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get :dashboard, on: :member
     get 'complete_address/:zipcode', action: :complete_address, on: :collection
 
-    resources :projects do
+    resources :projects, except: :show do
       get :dashboard, on: :member
 
       resources :newsletters

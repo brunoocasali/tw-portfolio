@@ -14,10 +14,12 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.easing
+//= require angular
 //= require wow
 //= require fittext
 //= require image-picker
 //= require jQuery-Mask-Plugin
+//= require core
 //= require_self
 
 $('.alert').fadeTo(3000, 500).slideUp(500, function(){

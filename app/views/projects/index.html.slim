@@ -1,19 +1,28 @@
-h1 Listing projects
+h2
+  = t 'list', m: tmp(Project)
+  = link_to t('new', m: tm(Project)), new_client_project_url(@client), class: 'btn btn-primary pull-right'
 
-table
+= paginate @projects
+= empty_list_message @projects
+
+table.table.table-hover
   thead
     tr
-      th
-      th
-      th
+      th = ta(Project, :name)
+      th = ta(Project, :code)
+      th = ta(Project, :status)
+      th(colspan="2")
 
   tbody
     - @projects.each do |project|
       tr
-        td = link_to 'Show', project
-        td = link_to 'Edit', edit_project_path(project)
-        td = link_to 'Destroy', project, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td = project.name
+        td = link_to raw("http://wacelkoski.com/<b>#{project.code}</b>"), "http://wacelkoski.com/#{project.code}"
+        td = project.status_humanize
+        td.text-center(width='5%')
+          = link_to t('.buttons.manage'), client_project_path(@client, project)
+        td.text-center(width='5%')
+          = link_to t('destroy'), client_project_path(@client, project), data: { confirm: t('are_you_sure') }, method: :delete
 
-br
 
-= link_to 'New Project', new_project_path
+= paginate @projects

@@ -2,48 +2,35 @@ class ProjectsController < ApplicationController
   before_action :set_client
   before_action :set_project, only: [:show, :edit, :update, :destroy, :dashboard]
 
-  # GET /projects
   def index
-    @projects = @client.projects.all
+    @projects = @client.projects.page(params[:page])
   end
 
-  # GET /projects/1
-  def show
-  end
+  def show; end
 
-  # GET /projects/new
   def new
-    @project = Project.new
+    @project = @client.projects.build
   end
 
-  # GET /projects/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /projects
   def create
-    @project = Project.new(project_params)
+    @project = @client.projects.build(project_params)
+    @project.save
 
-    if @project.save
-      redirect_to @project, notice: 'Project was successfully created.'
-    else
-      render :new
-    end
+    respond_with @project, location: client_projects_path(@client)
   end
 
-  # PATCH/PUT /projects/1
   def update
-    if @project.update(project_params)
-      redirect_to @project, notice: 'Project was successfully updated.'
-    else
-      render :edit
-    end
+    @project.update(project_params)
+
+    respond_with @project, location: client_projects_path(@client)
   end
 
-  # DELETE /projects/1
   def destroy
     @project.destroy
-    redirect_to projects_url, notice: 'Project was successfully destroyed.'
+
+    respond_with @project, location: client_projects_path(@client)
   end
 
   private
@@ -57,6 +44,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params[:project]
+    params.require(:project).permit(:name, :status, :code, :owner_id)
   end
 end

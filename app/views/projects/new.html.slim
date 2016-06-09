@@ -1,5 +1,5 @@
-h1 New project
+h2
+ = t('new', m: tm(Project))
+ = link_to t('back'), client_projects_path(@client), class: 'btn btn-default pull-right'
 
 == render 'form'
-
-= link_to 'Back', projects_path

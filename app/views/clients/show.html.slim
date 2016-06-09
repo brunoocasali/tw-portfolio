@@ -1,7 +1,8 @@
 h2
-  = t('show', m: tm(User), id: @client.id)
+  = t('show', m: t('.title'), id: @client.id)
 br
 
+h4 Dados Básicos
 p
   strong
   = "#{ta(User, :name)}: #{@client.name}"
@@ -11,9 +12,24 @@ p
 p
   strong
   = "#{ta(User, :phone)}: #{@client.phone}"
+
+hr
+h4 Endereço
+
 p
   strong
-  = "#{ta(User, :role)}: #{@client.role_humanize}"
+  = "#{ta(Address, :nick)}: #{@client.address.nick}"
+p
+  strong
+  = "#{ta(Address, :reference)}: #{@client.address.reference}"
+p
+  strong
+  = "#{ta(Address, :street)}: #{@client.address.street}"
+
+p
+  strong
+  = "#{ta(Address, :city)} - #{ta(Address, :state)}: #{@client.address.city} - #{@client.address.state}"
+
 
 = link_to t('edit', m: t('.title')), edit_client_path(@client), class: 'btn btn-primary'
 | &nbsp;

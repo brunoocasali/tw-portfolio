@@ -9,4 +9,4 @@ pt-BR:
   edit_btn: 'Editar'
   destroy: 'Excluir'
   not_found: 'Nenhum item foi encontrado!'
-  are_you_sure: 'Você tem certeza?'
+  are_you_sure: "Você tem certeza?  Esta ação não poderá ser desfeita!"
