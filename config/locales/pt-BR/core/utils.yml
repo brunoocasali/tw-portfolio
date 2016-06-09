@@ -6,6 +6,7 @@ pt-BR:
   edit: 'Editar %{m}'
   show: 'Exibindo Detalhes do %{m} #%{id}'
   show_btn: 'Detalhes'
+  manage_btn: 'Gerenciar'
   edit_btn: 'Editar'
   destroy: 'Excluir'
   not_found: 'Nenhum item foi encontrado!'

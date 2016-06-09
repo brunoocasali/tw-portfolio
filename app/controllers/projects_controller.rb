@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   def show; end
 
   def new
-    @project = @client.projects.build
+    @project = @client.projects.build(status: ProjectStatus::INITIATED)
   end
 
   def edit; end

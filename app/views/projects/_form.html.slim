@@ -1,15 +1,16 @@
-.col-sm-8
-  = simple_form_for(@project, url: client_projects_url(@client)) do |f|
-    = f.error_notification
+= simple_form_for(@project, url: client_projects_url(@client)) do |f|
+  = f.error_notification
 
-    .form-inputs
-      .row
-        .form-group.col-sm-12
-          = f.input :name
-        .form-group.col-sm-12
-          = f.input :code, input_html: { 'ng-model': 'url' }
-          small Este é o link por onde os visitantes acessaram as fotografias. Quanto menor melhor! &nbsp;
-          small.text-danger#preview http://wacelkoski.com/{{url}}
+  .form-inputs
+    .row
+      .form-group.col-sm-8
+        = f.input :name
+      .form-group.col-sm-4
+        = f.input :status, collection: ProjectStatus.to_a
+      .form-group.col-sm-12
+        = f.input :code, input_html: { 'ng-model': 'url', 'ng-init': "url='#{f.object.code}'" }
+        small Este é o link por onde os visitantes irão acessar os álbuns. Quanto menor melhor! &nbsp;
+        small.text-danger#preview http://wacelkoski.com/{{url}}
 
-    .form-actions
-      = f.button :submit
+  .form-actions
+    = f.button :submit

@@ -1,5 +1,3 @@
 var App = angular.module('app', []);
 
-App.controller('ProjectsController', function($scope) {
-
-});
+App.controller('ProjectsController', function($scope) {});

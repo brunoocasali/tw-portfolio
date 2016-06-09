@@ -1,8 +1,6 @@
-h1 Editing project
+h2
+ = t('edit', m: tm(Project))
+ = link_to t('back'), client_projects_path(@client), class: 'btn btn-default pull-right'
+ = link_to t('manage_btn'), dashboard_client_project_path(@client, @project), class: 'btn btn-primary pull-right'
 
 == render 'form'
-
-= link_to 'Show', @project
-'|
-= link_to 'Back', projects_path
-
