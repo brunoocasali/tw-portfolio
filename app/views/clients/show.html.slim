@@ -1,6 +1,20 @@
-p#notice = notice
+h2
+  = t('show', m: tm(User), id: @client.id)
+br
 
+p
+  strong
+  = "#{ta(User, :name)}: #{@client.name}"
+p
+  strong
+  = "#{ta(User, :email)}: #{@client.email}"
+p
+  strong
+  = "#{ta(User, :phone)}: #{@client.phone}"
+p
+  strong
+  = "#{ta(User, :role)}: #{@client.role_humanize}"
 
-= link_to 'Edit', edit_client_path(@client)
-'|
-= link_to 'Back', clients_path
+= link_to t('edit', m: t('.title')), edit_client_path(@client), class: 'btn btn-primary'
+| &nbsp;
+= link_to t('back'), clients_path, class: 'btn btn-default'

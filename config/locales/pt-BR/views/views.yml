@@ -8,5 +8,8 @@ pt-BR:
   contacts:
     title: 'Contatos'
 
+  clients:
+    title: 'Clientes'
+
   projects:
     title: 'Projetos'

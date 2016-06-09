@@ -9,4 +9,16 @@ class User < ActiveRecord::Base
 
   has_enumeration_for :role, with: UserRole, required: true, create_scopes: true,
                              create_helpers: true
+
+  belongs_to :address
+  accepts_nested_attributes_for :address
+
+  before_validation :generate_password
+
+  def generate_password
+    if self.password.nil?
+      self.password = Devise.friendly_token.first(12)
+      self.password_confirmation = password
+    end
+  end
 end

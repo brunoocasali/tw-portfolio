@@ -1,19 +1,44 @@
-h1 Listing clients
+h2
+  = t 'list', m: t('.title')
+  = link_to t('new', m: t('.title_singular')), new_client_url, class: 'btn btn-primary pull-right'
 
-table
+= paginate @clients
+= empty_list_message @clients
+
+table.table.table-hover
   thead
     tr
-      th
-      th
-      th
+      th = ta(User, :name)
+      th = ta(User, :email)
+      th = ta(User, :phone)
+      th(colspan="3")
 
   tbody
     - @clients.each do |client|
       tr
-        td = link_to 'Show', client
-        td = link_to 'Edit', edit_client_path(client)
-        td = link_to 'Destroy', client, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td = client.name
+        td = client.email
+        td = client.phone
+        td.text-center(width='5%')
+          - size = client.projects.size
+          - if size == 0
+            span.label.label-default = "nenhum #{tm(Project).downcase}"
+          - elsif size == 1
+            span.label.label-default = "1 #{tm(Project).downcase}"
+          - else
+            span.label.label-success = "#{size} #{tmp(Project).downcase}"
+        td.text-center(width='12%')
+          - if size.zero?
+            = link_to t('.buttons.create_project'), new_client_project_path(client)
+          - elsif size == 1
+            = link_to t('.buttons.manage_project'), dashboard_client_project_path(client, client.projects.first.id)
+          - else
+            = link_to t('.buttons.manage_projects'), client_projects_path(client)
 
-br
+        td.text-center(width='5%')
+          = link_to t('show_btn'), client_path(client)
+        td.text-center(width='5%')
+          = link_to t('destroy'), registration_path('user'), data: { confirm: t('are_you_sure') }, method: :delete
 
-= link_to 'New Client', new_client_path
+
+= paginate @clients

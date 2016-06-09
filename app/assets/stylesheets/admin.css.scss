@@ -16,9 +16,12 @@ h2{
 
 /* Botões gigantes de menus */
 
+.btn-monster{
+  margin: 5px 5px 5px 5px;
+}
+
 .btn-group-monster >.btn, .btn-monster {
   padding: 50px 50px;
   font-size: 28px;
   line-height: 1.3333333;
-  border-radius: 6px;
 }

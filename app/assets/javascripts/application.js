@@ -17,6 +17,7 @@
 //= require wow
 //= require fittext
 //= require image-picker
+//= require jQuery-Mask-Plugin
 //= require_self
 
 $('.alert').fadeTo(3000, 500).slideUp(500, function(){

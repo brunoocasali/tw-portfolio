@@ -40,6 +40,7 @@ gem 'kaminari'
 gem 'country_select'
 gem 'enumerate_it'
 gem 'responders'
+gem 'brazilian-rails'
 
 # uploading
 gem 'carrierwave'
@@ -54,4 +55,8 @@ end
 
 group :production do
   gem 'rails_12factor'
+end
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-jQuery-Mask-Plugin', '~> 1.14.0'
 end

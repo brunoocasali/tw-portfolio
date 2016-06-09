@@ -8,15 +8,19 @@ Rails.application.routes.draw do
     root 'welcome#index', as: :authenticated_root
   end
 
-  # get :find_cities, on: :collection
-
   resources :contacts, only: [:create, :show, :index, :delete]
 
   resources :clients do
     get :dashboard, on: :member
+    get 'complete_address/:zipcode', action: :complete_address, on: :collection
 
     resources :projects do
       get :dashboard, on: :member
+
+      resources :newsletters
+      resources :sessions
+      resources :galleries
+      resources :print_requests
     end
   end
 

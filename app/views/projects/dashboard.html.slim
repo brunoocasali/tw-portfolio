@@ -12,13 +12,11 @@ h2.text-center = raw("#{tm(Project)}: <b>#{@project.name}</b>")
         span.fa.fa-calendar aria-hidden="true" &nbsp;
         = tmp(Session)
 
-  br /
-
-  .row
     .col-sm-6
       = link_to 'newsletters', class: 'btn btn-danger btn-monster btn-block' do
         span.fa.fa-picture-o aria-hidden="true" &nbsp;
         = tmp(Gallery)
+
     .col-sm-6
       = link_to 'newsletters', class: 'btn btn-danger btn-monster btn-block' do
         span.fa.fa-print aria-hidden="true" &nbsp;
