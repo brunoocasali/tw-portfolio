@@ -10,15 +10,25 @@ Rails.application.routes.draw do
 
   resources :contacts, only: [:create, :show, :index, :delete]
 
+  resources :utils, only: :none do
+    get 'complete_address/:zipcode', action: :complete_address, on: :collection
+  end
+
   resources :clients do
     get :dashboard, on: :member
-    get 'complete_address/:zipcode', action: :complete_address, on: :collection
 
     resources :projects, except: :show do
       get :dashboard, on: :member
 
       resources :newsletters, except: [:new, :edit, :update, :show]
-      resources :sessions
+      resources :sessions, only: [:destroy, :create, :index] do
+        member do
+          get :wait
+          get :cancel
+          get :finish
+        end
+      end
+
       resources :galleries
       resources :print_requests
     end

@@ -31,7 +31,10 @@ html(ng-app="app")
             li class=("nav-item #{active_class(root_path)}")
               a.nav-link href="/" Home
             li class=("nav-item #{active_class('contacts')}")
-              a.nav-link href="/contacts" Contatos
+              a.nav-link href="/contacts"
+                | Contatos&nbsp;
+                - if Contact.news?
+                  span.badge novo
             li class=("nav-item #{active_class('clients')}")
               a.nav-link href="/clients" Clientes
           ul class=("nav navbar-nav navbar-right #{active_class(edit_user_password_path)}")

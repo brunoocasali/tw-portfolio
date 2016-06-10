@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   before_action :set_client
   before_action :set_project
-  before_action :set_session, only: [:show, :edit, :update, :destroy]
+  before_action :set_session, only: [:wait, :finish, :cancel, :destroy]
 
   def index
     @sessions = @project.sessions.all
@@ -10,9 +10,26 @@ class SessionsController < ApplicationController
     respond_with(@sessions, location: client_project_sessions_path(@client, @project))
   end
 
-  def show; end
+  def cancel
+    @session.canceled!
+    @session.save
 
-  def edit; end
+    redirect_to client_project_sessions_path(@client, @project)
+  end
+
+  def finish
+    @session.finished!
+    @session.save
+
+    redirect_to client_project_sessions_path(@client, @project)
+  end
+
+  def wait
+    @session.waiting!
+    @session.save
+
+    redirect_to client_project_sessions_path(@client, @project)
+  end
 
   def create
     @session = @project.sessions.build(session_params)
@@ -21,29 +38,22 @@ class SessionsController < ApplicationController
     if @session.save
       redirect_to client_project_sessions_path(@client, @project)
     else
-      render :index
-    end
-  end
+      @session.build_address
 
-  def update
-    if @session.update(session_params)
-      redirect_to @session, notice: 'Session was successfully updated.'
-    else
-      render :edit
+      render :index
     end
   end
 
   def destroy
     @session.destroy
+
     redirect_to sessions_url, notice: 'Session was successfully destroyed.'
   end
 
   private
 
   def set_new_session
-    params = { status: SessionStatus::WAITING, start_at: Time.zone.now, finish_at: Time.zone.now + 2.hours }
-
-    @session = @project.sessions.build(params)
+    @session = @project.sessions.build(status: SessionStatus::WAITING)
     @session.build_address
   end
 

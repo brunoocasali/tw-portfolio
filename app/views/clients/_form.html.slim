@@ -24,7 +24,7 @@
               .alert.alert-dismissible.alert-danger
                 | Ops! o CEP informado é inválido... Não encontramos nada sobre ele!
             .form-group.col-sm-3
-              = fa.input :zipcode, as: :zip_code, input_html: { onblur: 'loadCEP()' }
+              = fa.input :zipcode, as: :zip_code, input_html: { id: 'zipcode', onblur: 'loadCEP()' }
             .form-group.col-sm-9
               = fa.input :street
             .form-group.col-sm-6

@@ -4,10 +4,10 @@ html
     title
       | Tatiana Wacelkoski - Portfólio: Acesso
 
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+
     link[href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-OiWEn8WwtH+084y4yW2YhhH6z/qTSecHZuk/eiWtnvLtU+Z8lpDsmhOKkex6YARr" crossorigin="anonymous"]
 
-    / = favicon_link_tag 'icon.png'
     = csrf_meta_tags
     = stylesheet_link_tag 'devise'
 
@@ -18,7 +18,7 @@ html
           a.navbar-brand[href="/"]
             i.fa.fa-camera
 
-    .container
+    .container(style="margin-top: 55px;")
       .col-md-4.col-md-offset-4
         = notices
         = yield

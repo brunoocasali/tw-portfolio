@@ -3,6 +3,7 @@ class Session < ActiveRecord::Base
   belongs_to :address
 
   validates :address, presence: true
+  validates :start_at, presence: true
 
   accepts_nested_attributes_for :address
 
