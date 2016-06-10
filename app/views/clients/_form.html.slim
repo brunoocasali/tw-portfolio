@@ -1,40 +1,39 @@
-.col-sm-6
 
-  = simple_form_for(@client, url: clients_path) do |f|
-    = f.error_notification
+= simple_form_for(@client, url: clients_path) do |f|
+  = f.error_notification
 
-    .form-inputs
-      fieldset
-        legend Dados Básicos
+  .form-inputs
+    fieldset
+      legend Dados Básicos
+      .row
+        .form-group.col-sm-6
+          = f.input :name
+        .form-group.col-sm-6
+          = f.input :phone, as: :cellphone
+      .row
+        .form-group.col-sm-12
+          = f.input :email
+
+    fieldset
+      legend Endereço
+
+      = f.simple_fields_for :address, @client.address do |fa|
         .row
+          .form-group.col-sm-12.hide#alert_cep
+            .alert.alert-dismissible.alert-danger
+              | Ops! o CEP informado é inválido... Não encontramos nada sobre ele!
+          .form-group.col-sm-3
+            = fa.input :zipcode, as: :zip_code, input_html: { id: 'zipcode', onblur: 'loadCEP()' }
+          .form-group.col-sm-9
+            = fa.input :street
           .form-group.col-sm-6
-            = f.input :name
+            = fa.input :city
           .form-group.col-sm-6
-            = f.input :phone, as: :cellphone
-        .row
-          .form-group.col-sm-12
-            = f.input :email
+            = fa.input :state
+          .form-group.col-sm-8
+            = fa.input :reference, input_html: { placeholder: 'Ao lado do prédio azul - n° 54' }
+          .form-group.col-sm-4
+            = fa.input :nick, input_html: { placeholder: 'Minha Casa' }
 
-      fieldset
-        legend Endereço
-
-        = f.simple_fields_for :address, @client.address do |fa|
-          .row
-            .form-group.col-sm-12.hide#alert_cep
-              .alert.alert-dismissible.alert-danger
-                | Ops! o CEP informado é inválido... Não encontramos nada sobre ele!
-            .form-group.col-sm-3
-              = fa.input :zipcode, as: :zip_code, input_html: { id: 'zipcode', onblur: 'loadCEP()' }
-            .form-group.col-sm-9
-              = fa.input :street
-            .form-group.col-sm-6
-              = fa.input :city
-            .form-group.col-sm-6
-              = fa.input :state
-            .form-group.col-sm-8
-              = fa.input :reference, input_html: { placeholder: 'Ao lado do prédio azul - n° 54' }
-            .form-group.col-sm-4
-              = fa.input :nick, input_html: { placeholder: 'Minha Casa' }
-
-    .form-actions
-      = f.button :submit
+  .form-actions
+    = f.button :submit

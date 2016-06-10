@@ -14,6 +14,12 @@ pt-BR:
   sessions:
     title: 'Ensaios'
 
+  print_requests:
+    title: 'Requisições de Impressão'
+
+  galleries:
+    title: 'Galerias'
+
   newsletters:
     title: 'Espectadores'
 

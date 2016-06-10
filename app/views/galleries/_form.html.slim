@@ -1,0 +1,7 @@
+= simple_form_for(@gallery, url: client_project_galleries_path(@client, @project)) do |f|
+  = f.error_notification
+
+  .form-inputs
+
+  .form-actions
+    = f.button :submit

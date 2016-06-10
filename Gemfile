@@ -32,6 +32,7 @@ gem 'devise-bootstrap-views'
 gem 'coffee-rails'
 gem 'momentjs-rails'
 gem 'fullcalendar-rails'
+gem 'dropzonejs-rails'
 
 # templating
 gem 'simple_form'

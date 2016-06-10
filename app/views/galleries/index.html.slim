@@ -1,0 +1,9 @@
+h2
+  = t('list', m: tmp(Gallery))
+  = link_to t('back'), :back, class: 'btn btn-sm btn-default pull-right'
+
+= paginate @galleries
+= empty_list_message @galleries
+
+
+= link_to t('new_a', m: tm(Gallery)), new_client_project_gallery_path(@client, @project), class: 'btn btn-sm btn-monster btn-default'

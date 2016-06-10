@@ -129,6 +129,8 @@ GEM
     devise-bootstrap-views (0.0.8)
     devise-i18n (1.0.1)
     dotenv (2.1.1)
+    dropzonejs-rails (0.7.3)
+      rails (> 3.1)
     enumerate_it (1.2.9)
       activesupport (>= 3.0.0)
     erubis (2.7.0)
@@ -424,6 +426,7 @@ DEPENDENCIES
   devise-bootstrap-views
   devise-i18n
   dotenv
+  dropzonejs-rails
   enumerate_it
   fittextjs_rails
   fog

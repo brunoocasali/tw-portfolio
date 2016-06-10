@@ -1,0 +1,5 @@
+h2
+ = t('new_a', m: tm(Gallery))
+ = link_to t('back'), client_project_galleries_path(@client, @project), class: 'btn btn-default btn-sm pull-right'
+
+== render 'form'

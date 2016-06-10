@@ -1,0 +1,19 @@
+h1 Listing print_requests
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @print_requests.each do |print_request|
+      tr
+        td = link_to 'Show', print_request
+        td = link_to 'Edit', edit_print_request_path(print_request)
+        td = link_to 'Destroy', print_request, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Print request', new_print_request_path

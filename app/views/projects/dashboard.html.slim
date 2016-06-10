@@ -13,14 +13,16 @@ h2.text-center = raw("#{tm(Project)}: <b>#{@project.name}</b>")
         = tmp(Session)
 
     .col-sm-6
-      = link_to 'newsletters', class: 'btn btn-danger btn-monster btn-block' do
+      = link_to client_project_galleries_path(@client, @project), class: 'btn btn-danger btn-monster btn-block' do
         span.fa.fa-picture-o aria-hidden="true" &nbsp;
         = tmp(Gallery)
 
     .col-sm-6
-      = link_to 'newsletters', class: 'btn btn-danger btn-monster btn-block' do
+      = link_to client_project_print_requests_path(@client, @project), class: 'btn btn-danger btn-monster btn-block' do
         span.fa.fa-print aria-hidden="true" &nbsp;
-        = tm(PrintRequest)
+        = tmp(PrintRequest)
+        | &nbsp;
+        span.badge 2
 
   .row(style="margin-top: 50px")
     .col-sm-6(style="margin-left: 5px")

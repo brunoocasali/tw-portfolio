@@ -15,8 +15,6 @@ Rails.application.routes.draw do
   end
 
   resources :clients do
-    get :dashboard, on: :member
-
     resources :projects, except: :show do
       get :dashboard, on: :member
 
@@ -29,7 +27,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :galleries
+      resources :galleries, except: :show
       resources :print_requests
     end
   end
