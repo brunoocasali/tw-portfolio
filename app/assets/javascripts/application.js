@@ -22,6 +22,7 @@
 //= require fittext
 //= require image-picker
 //= require jQuery-Mask-Plugin
+//= require dropzone
 //= require core
 //= require_self
 
@@ -85,3 +86,35 @@ $("#session_address_id").change(function(){
     $('#address_form').addClass('hide');
   }
 });
+
+Dropzone.options.mediaDropzone = {
+  paramName: 'file',
+  maxFilesize: 15,
+  dictDefaultMessage: 'Arraste e solte arquivos aqui, para fazer o upload',
+  addRemoveLinks: true,
+  dictRemoveFile: 'Deletar',
+  init: function() {
+    var thisDropzone = this;
+
+    $.getJSON(($("#mediaDropzone").attr("action")) + '.json', function(data) {
+        $.each(data, function(k, v){
+          var mockFile = {
+            name: v.filename.url.substr(v.filename.url.lastIndexOf('/') + 1),
+            id: v.id, size: v.file_size
+          };
+
+          thisDropzone.emit("addedfile", mockFile);
+          thisDropzone.emit("thumbnail", mockFile, v.filename.url);
+          thisDropzone.emit("complete", mockFile);
+      });
+    });
+
+    this.on('removedfile', function(file) {
+      console.log(file)
+      $.ajax({
+        url: $("#mediaDropzone").attr("action") + "/" + file.id,
+        type: 'DELETE'
+      });
+    });
+  }
+};

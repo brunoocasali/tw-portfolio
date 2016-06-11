@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'home/index'
   get 'welcome/index'
 
   devise_for :users
@@ -9,6 +8,10 @@ Rails.application.routes.draw do
   end
 
   resources :contacts, only: [:create, :show, :index, :delete]
+
+  resources :galleries, only: :none do
+    resources :media, only: [:index, :create, :destroy]
+  end
 
   resources :utils, only: :none do
     get 'complete_address/:zipcode', action: :complete_address, on: :collection

@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
 
   has_many :newsletters
   has_many :sessions
+  has_many :galleries
 
   validates :code, :name, presence: true
   has_enumeration_for :status, with: ProjectStatus, required: true, create_helpers: true

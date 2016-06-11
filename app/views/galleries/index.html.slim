@@ -5,5 +5,12 @@ h2
 = paginate @galleries
 = empty_list_message @galleries
 
+- @galleries.each do |gallery|
+    .col-sm-3
+      = image_tag gallery.media.first.filename.url, width: '100%'
+      = link_to t('edit_btn'), edit_client_project_gallery_path(@client, @project, gallery)
+      | &nbsp;
+      = link_to t('destroy', m: tm(Gallery)), client_project_gallery_path(@client, @project, gallery), method: :delete
 
-= link_to t('new_a', m: tm(Gallery)), new_client_project_gallery_path(@client, @project), class: 'btn btn-sm btn-monster btn-default'
+.col-sm-3
+  = link_to t('new_a', m: tm(Gallery)), new_client_project_gallery_path(@client, @project), class: 'btn btn-sm btn-monster btn-default'

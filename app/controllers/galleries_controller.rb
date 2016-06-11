@@ -4,48 +4,32 @@ class GalleriesController < ApplicationController
   before_action :set_gallery, only: [:edit, :update, :destroy]
 
   def index
-    @galleries = Gallery.page(params[:page])
+    @galleries = @project.galleries.page(params[:page])
   end
 
   def new
-    @gallery = Gallery.new
+    @gallery = @project.galleries.build
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
-    @gallery = Gallery.new(gallery_params)
+    @gallery = @project.galleries.build(gallery_params)
+    @gallery.save
 
-    respond_to do |format|
-      if @gallery.save
-        format.html { redirect_to @gallery, notice: 'Gallery was successfully created.' }
-        format.json { render :show, status: :created, location: @gallery }
-      else
-        format.html { render :new }
-        format.json { render json: @gallery.errors, status: :unprocessable_entity }
-      end
-    end
+    respond_with(@gallery, location: edit_client_project_gallery_path(@client, @project, @gallery, next: true))
   end
 
   def update
-    respond_to do |format|
-      if @gallery.update(gallery_params)
-        format.html { redirect_to @gallery, notice: 'Gallery was successfully updated.' }
-        format.json { render :show, status: :ok, location: @gallery }
-      else
-        format.html { render :edit }
-        format.json { render json: @gallery.errors, status: :unprocessable_entity }
-      end
-    end
+    @gallery.update(gallery_params)
+
+    respond_with(@gallery, location: client_project_galleries_path(@client, @project))
   end
 
   def destroy
     @gallery.destroy
-    respond_to do |format|
-      format.html { redirect_to galleries_url, notice: 'Gallery was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+
+    respond_with(@gallery, location: client_project_galleries_path(@client, @project))
   end
 
   private
@@ -59,10 +43,10 @@ class GalleriesController < ApplicationController
   end
 
   def set_gallery
-    @gallery = @project.sessions.find(params[:id])
+    @gallery = @project.galleries.find(params[:id])
   end
 
   def gallery_params
-    params.fetch(:gallery, {})
+    params.require(:gallery).permit(:name, :kind, :description, :show, media_attributes: [:gallery_id, :filename])
   end
 end
