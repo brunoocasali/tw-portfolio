@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  resources :welcome, only: :index do
+    get :sessions, on: :collection
+  end
 
   devise_for :users
 

@@ -47,7 +47,7 @@ class SessionsController < ApplicationController
   def destroy
     @session.destroy
 
-    redirect_to sessions_url, notice: 'Session was successfully destroyed.'
+    respond_with(@session, location: client_project_sessions_path(@client, @project))
   end
 
   private

@@ -5,6 +5,7 @@ pt-BR:
   list: 'Listando %{m}'
   edit: 'Editar %{m}'
   show: 'Exibindo Detalhes do %{m} #%{id}'
+  show_a: 'Exibindo Detalhes da %{m} #%{id}'
   show_btn: 'Detalhes'
   manage_btn: 'Gerenciar'
   edit_btn: 'Editar'

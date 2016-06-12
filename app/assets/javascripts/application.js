@@ -67,6 +67,28 @@ $('#calendar_sessions').fullCalendar({
   }
 });
 
+$('#calendar').fullCalendar({
+  events: '/welcome/sessions.json',
+  startParam: 'start_at',
+  endParam: 'finish_at',
+  lang: 'pt-br',
+  header: {
+      left: 'prev,next today myCustomButton',
+      center: 'title',
+      right: 'month,agendaWeek,agendaDay'
+  },
+  eventClick:  function(event, jsEvt, view) {
+    $('#modalTitle').html(event.title);
+    $('#modalBody').html(event.description);
+
+    $('#cancel_btn').attr('href', 'sessions/'+ event.id +'/cancel');
+    $('#wait_btn').attr('href', 'sessions/'+ event.id +'/wait');
+    $('#finish_btn').attr('href', 'sessions/'+ event.id +'/finish');
+
+    $('#fullCalModal').modal();
+  }
+});
+
 // all calendars
 $('.fc-toolbar').find('.fc-button-group').addClass('btn-group');
 $('.fc-toolbar').find('.fc-button').addClass('btn btn-danger').removeClass('fc-prev-button fc-button fc-state-default fc-corner-left fc-next-button fc-corner-right');
