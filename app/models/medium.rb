@@ -1,5 +1,6 @@
 class Medium < ActiveRecord::Base
   belongs_to :gallery
+  has_many :print_requests
 
   mount_uploader :filename, PhotoUploader
 
