@@ -2,7 +2,7 @@
 
   h2
     = t('show', m: tm(Contact), id: @contact.id)
-    = link_to t('back'), contacts_path, class: 'btn btn-primary pull-right'
+    = link_to t('back'), contacts_path, class: 'btn btn-default btn-sm pull-right'
 
   = simple_form_for(@contact, defaults: { input_html: { disabled: true } }) do |f|
     .form-inputs

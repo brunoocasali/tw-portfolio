@@ -1,3 +1,63 @@
-h1
-  | Bem-Vindo(a)! à área administrativa do portfólio&nbsp;
-  b = current_user.name
+.row
+  .col-sm-12
+    h2
+      b = "#{current_user.name}: "
+      | Bem-Vindo(a)! à área administrativa do portfólio
+
+    br
+
+  .col-sm-8
+    fieldset
+      legend Próximos Ensaios
+
+      #calendar
+
+  .col-sm-4
+    fieldset
+      legend = "Últimos #{tmp(Contact)}"
+
+      table.table.table-striped(width='100%')
+        tbody
+          span.text-muted = 'Nenhum contato foi encontrado.' if @contacts.empty?
+          - @contacts.each do |contact|
+              tr
+                td
+                  = contact.name
+                  br
+                  = mail_to contact.email
+
+                td.text-right
+                  = l contact.updated_at, format: :short
+                  br
+                  = link_to t('show_btn'), contact_path(contact)
+
+    fieldset
+      legend = tmp(PrintRequest)
+
+      table.table.table-striped(width='100%')
+        tbody
+          span.text-muted = 'Nenhuma requisição de impressão foi encontrada.' if @print_requests.empty?
+          - @print_requests.each do |print_request|
+              tr
+                td
+                  = print_request.requestor.name
+                  br
+                  span.label.label-danger = print_request.status_humanize.underscore
+                  span.label.label-success = print_request.print_size
+                  span.label.label-default = "#{print_request.quantity} und."
+
+                td.text-right
+                  = l print_request.updated_at, format: :short
+                  br
+                  = link_to t('show_btn'), client_project_print_request_url(print_request.medium.owner, print_request.project, print_request)
+
+
+
+#fullCalModal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal" type="button"
+          span aria-hidden="true" &times;
+          span.sr-only close
+        h4#modalTitle.modal-title

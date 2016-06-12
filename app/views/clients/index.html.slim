@@ -17,7 +17,7 @@ table.table.table-hover
     - @clients.each do |client|
       tr
         td = client.name
-        td = client.email
+        td = mail_to(client.email)
         td = client.phone
         td.text-center(width='5%')
           - size = client.projects.size
