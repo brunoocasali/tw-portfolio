@@ -7,6 +7,8 @@ class Medium < ActiveRecord::Base
   validates :filename, presence: true
 
   before_save :update_asset_attributes
+  delegate :project, to: :gallery
+  delegate :owner, to: :project
 
   private
 
