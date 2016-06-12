@@ -1,5 +1,6 @@
 h2
   = t('list', m: tmp(Contact))
+  = link_to t('back'), :back, class: 'btn btn-sm btn-default pull-right'
 
 = paginate @contacts
 = empty_list_message @contacts

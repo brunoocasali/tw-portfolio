@@ -1,7 +1,6 @@
 class NewslettersController < ApplicationController
   before_action :set_client
   before_action :set_project
-  before_action :set_newsletter, only: :create
 
   def index
     @newsletters = @project.newsletters.order(created_at: :asc).page(params[:page])
@@ -21,10 +20,6 @@ class NewslettersController < ApplicationController
 
   def set_project
     @project = @client.projects.find(params[:project_id])
-  end
-
-  def set_newsletter
-    @newsletter = Newsletter.find(params[:id])
   end
 
   def newsletter_params
