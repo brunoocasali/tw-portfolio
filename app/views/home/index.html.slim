@@ -66,23 +66,26 @@ body
   section#contact.container.content-section.text-center
     .row
       .col-lg-8.col-lg-offset-2
-        h2 Contact Start Bootstrap
-        p Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!
+        h2 Fale comigo!
+        p Sinta-se à vontade em enviar suas dúvidas, críticas ou sugestões sobre meu trabalho abaixo.
+
+        == render 'contacts/form'
+        br
+
         p
-          a href="mailto:feedback@startbootstrap.com"  feedback@startbootstrap.com
+          | Ou você pode me contactar pelo email:&nbsp;
+          a href="mailto:ola@wacelkoski.com" ola@wacelkoski.com
+
         ul.list-inline.banner-social-buttons
           li
-            a.btn.btn-default.btn-lg href="https://twitter.com/SBootstrap"
-              i.fa.fa-twitter.fa-fw
-              span.network-name Twitter
+            a.btn.btn-default.btn-lg href="https://facebook.com/wacelkoski"
+              i.fa.fa-facebook.fa-fw
+              span.network-name Facebook
           li
-            a.btn.btn-default.btn-lg href="https://github.com/IronSummitMedia/startbootstrap"
-              i.fa.fa-github.fa-fw
-              span.network-name Github
-          li
-            a.btn.btn-default.btn-lg href="https://plus.google.com/+Startbootstrap/posts"
-              i.fa.fa-google-plus.fa-fw
-              span.network-name Google+
+            a.btn.btn-default.btn-lg href="https://instagram.com/wacelkoski"
+              i.fa.fa-instagram.fa-fw
+              span.network-name Instagram
+
 
   /! Map Section
   #map

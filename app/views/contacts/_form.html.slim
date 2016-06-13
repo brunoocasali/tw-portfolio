@@ -1,9 +1,17 @@
-= simple_form_for(@contact) do |f|
-  .form-inputs
-    .row
-      .form-group.col-sm-6
-        = f.input :name
-      .form-group.col-sm-6
-        = f.input :email
-      .form-group.col-sm-12
-        = f.input :message, input_html: { rows: 5 }
+= form_for @contact do |f|
+  .row
+    .form-group.has-feedback.has-feedback-left
+      label.control-label.sr-only Name
+      = f.text_field :name, class: 'form-control input-lg', placeholder: 'Maria Silva Lima'
+      i.green-field.form-control-feedback.fa.fa-user.fa-lg.fa-fw
+
+    .form-group.has-feedback.has-feedback-left
+      label.control-label.sr-only Email
+      = f.text_field :email, class: 'form-control input-lg', placeholder: 'maria_lima@gmail.com'
+      i.green-field.form-control-feedback.fa.fa-envelope.fa-lg.fa-fw
+
+    .form-group
+      = f.text_area :message, class: 'form-control', rows: 5
+
+    .form-group
+      = f.submit 'Enviar Contato', class: 'btn btn-default pull-left'
