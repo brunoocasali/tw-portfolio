@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607184316) do
+ActiveRecord::Schema.define(version: 20160612040550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,21 +33,25 @@ ActiveRecord::Schema.define(version: 20160607184316) do
     t.text     "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "status"
   end
 
   add_index "contacts", ["email"], name: "index_contacts_on_email", using: :btree
+  add_index "contacts", ["status"], name: "index_contacts_on_status", using: :btree
 
   create_table "galleries", force: :cascade do |t|
     t.string   "name"
-    t.integer  "session_id"
     t.boolean  "show"
     t.text     "description"
     t.integer  "kind"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "project_id"
+    t.integer  "medium_id"
   end
 
-  add_index "galleries", ["session_id"], name: "index_galleries_on_session_id", using: :btree
+  add_index "galleries", ["medium_id"], name: "index_galleries_on_medium_id", using: :btree
+  add_index "galleries", ["project_id"], name: "index_galleries_on_project_id", using: :btree
 
   create_table "media", force: :cascade do |t|
     t.string   "filename"
@@ -56,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160607184316) do
     t.string   "subtitle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "file_size"
   end
 
   add_index "media", ["gallery_id"], name: "index_media_on_gallery_id", using: :btree
@@ -65,9 +70,10 @@ ActiveRecord::Schema.define(version: 20160607184316) do
     t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
-  add_index "newsletters", ["email"], name: "index_newsletters_on_email", using: :btree
+  add_index "newsletters", ["email"], name: "index_newsletters_on_email", unique: true, using: :btree
   add_index "newsletters", ["project_id"], name: "index_newsletters_on_project_id", using: :btree
 
   create_table "print_requests", force: :cascade do |t|
@@ -79,9 +85,11 @@ ActiveRecord::Schema.define(version: 20160607184316) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text     "message"
+    t.integer  "status"
   end
 
   add_index "print_requests", ["medium_id"], name: "index_print_requests_on_medium_id", using: :btree
+  add_index "print_requests", ["status"], name: "index_print_requests_on_status", using: :btree
   add_index "print_requests", ["user_id"], name: "index_print_requests_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
@@ -90,6 +98,7 @@ ActiveRecord::Schema.define(version: 20160607184316) do
     t.integer  "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   add_index "projects", ["code"], name: "index_projects_on_code", unique: true, using: :btree
@@ -97,13 +106,13 @@ ActiveRecord::Schema.define(version: 20160607184316) do
   add_index "projects", ["status"], name: "index_projects_on_status", using: :btree
 
   create_table "sessions", force: :cascade do |t|
-    t.datetime "date_at"
-    t.string   "local"
     t.integer  "project_id"
     t.integer  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "address_id"
+    t.datetime "start_at"
+    t.datetime "finish_at"
   end
 
   add_index "sessions", ["address_id"], name: "index_sessions_on_address_id", using: :btree
@@ -126,6 +135,7 @@ ActiveRecord::Schema.define(version: 20160607184316) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "address_id"
+    t.string   "name"
   end
 
   add_index "users", ["address_id"], name: "index_users_on_address_id", using: :btree
@@ -133,7 +143,8 @@ ActiveRecord::Schema.define(version: 20160607184316) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role"], name: "index_users_on_role", using: :btree
 
-  add_foreign_key "galleries", "sessions"
+  add_foreign_key "galleries", "media"
+  add_foreign_key "galleries", "projects"
   add_foreign_key "media", "galleries"
   add_foreign_key "newsletters", "projects"
   add_foreign_key "print_requests", "media"

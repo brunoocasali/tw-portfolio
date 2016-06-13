@@ -1,0 +1,32 @@
+h2.text-center = raw("#{tm(Project)}: <b>#{@project.name}</b>")
+
+.col-sm-10.col-sm-offset-1
+  .row
+    .col-sm-6
+      = link_to client_project_newsletters_path(@client, @project), class: 'btn btn-danger btn-monster btn-block' do
+        span.fa.fa-users aria-hidden="true" &nbsp;
+        = tmp(Newsletter)
+
+    .col-sm-6
+      = link_to client_project_sessions_path(@client, @project), class: 'btn btn-danger btn-monster btn-block' do
+        span.fa.fa-calendar aria-hidden="true" &nbsp;
+        = tmp(Session)
+
+    .col-sm-6
+      = link_to client_project_galleries_path(@client, @project), class: 'btn btn-danger btn-monster btn-block' do
+        span.fa.fa-picture-o aria-hidden="true" &nbsp;
+        = tmp(Gallery)
+
+    .col-sm-6
+      = link_to client_project_print_requests_path(@client, @project), class: 'btn btn-danger btn-monster btn-block' do
+        span.fa.fa-print aria-hidden="true" &nbsp;
+        = tmp(PrintRequest)
+        - if PrintRequest.requested.any?
+          | &nbsp;
+          span.badge = PrintRequest.requested.count
+
+  .row(style="margin-top: 50px")
+    .col-sm-6(style="margin-left: 5px")
+      = link_to t('back'), :back, class: 'btn btn-sm btn-default'
+      = link_to t('edit_btn'), edit_client_project_path(@client, @project), class: 'btn btn-sm btn-default'
+      = link_to t('new', m: tm(Project)), new_client_project_url(@client), class: 'btn btn-sm btn-default'

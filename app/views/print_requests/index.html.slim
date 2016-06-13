@@ -1,0 +1,33 @@
+h2
+  = t('list', m: tmp(PrintRequest))
+  = link_to t('back'), :back, class: 'btn btn-sm btn-default pull-right'
+
+= paginate @print_requests
+= empty_list_message @print_requests
+
+table.table.table-hover
+  thead
+    tr
+      th = ta(PrintRequest, :medium)
+      th.text-center = ta(PrintRequest, :quantity)
+      th.text-center = ta(PrintRequest, :size)
+      th.text-center = ta(PrintRequest, :requestor)
+      th = ta(PrintRequest, :status)
+      th(colspan="2")
+
+  tbody
+    - @print_requests.each do |print_request|
+      tr
+        td(width='20%') = image_tag print_request.medium.filename.url, width: '100%'
+        td.text-center = print_request.quantity
+        td.text-center = print_request.print_size
+        td.text-center = print_request.requestor.name
+        td
+          - if print_request.requested?
+            span.label.label-success = print_request.status_humanize
+          - else
+            = "#{print_request.status_humanize} em #{l print_request.updated_at, format: :short}"
+        td = link_to t('show_btn'), client_project_print_request_url(@client, @project, print_request)
+        td = link_to t('destroy'), client_project_print_requests_url(@client, @project), data: { confirm: 'Você tem certeza?' }, method: :delete
+
+= paginate @print_requests

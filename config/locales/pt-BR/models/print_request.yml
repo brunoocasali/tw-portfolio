@@ -3,7 +3,7 @@ pt-BR:
     models:
       print_request:
         one: Requisição de Impressão
-        other: Requisições de Impressões
+        other: Requisições de Impressão
     attributes:
       print_request:
         medium: Mídia
@@ -11,3 +11,4 @@ pt-BR:
         size: Tamanho
         status: Situação
         requestor: Solicitante
+        message: Mensagem

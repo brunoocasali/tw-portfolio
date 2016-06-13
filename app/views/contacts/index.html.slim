@@ -1,0 +1,32 @@
+h2
+  = t('list', m: tmp(Contact))
+  = link_to t('back'), :back, class: 'btn btn-sm btn-default pull-right'
+
+= paginate @contacts
+= empty_list_message @contacts
+
+table.table.table-hover
+  thead
+    tr
+      th = ta(Contact, :name)
+      th = ta(Contact, :email)
+      th = ta(Contact, :message)
+      th = ta(Contact, :created_at)
+      th
+      th(colspan="2")
+
+  tbody
+    - @contacts.each do |contact|
+      tr
+        td = contact.name
+        td = mail_to(contact.email)
+        td = truncate contact.message
+        td
+          - if contact.unread?
+            span.label.label-success = contact.status_humanize
+          - else
+            = "#{contact.status_humanize} em #{l contact.updated_at, format: :short}"
+        td = link_to t('.buttons.read'), contact
+        td = link_to t('destroy'), contact, data: { confirm: 'Você tem certeza?' }, method: :delete
+
+= paginate @contacts

@@ -1,4 +1,32 @@
-h2{
-  margin-bottom: 25px;
+/* CSS responsável por adicionar o ícone no início do input
+.form-control {
+  padding-left: 35px;
 }
 
+.form-control + .glyphicon {
+  position: absolute;
+  left: 0;
+  padding: 14px 28px;
+}
+*/
+
+/* Margem para dar um espaço maior entre os títulos */
+h2{
+  margin-bottom: 30px;
+}
+
+/* Botões gigantes de menus */
+
+.btn-monster{
+  margin: 5px 5px 5px 5px;
+}
+
+.btn-group-monster >.btn, .btn-monster {
+  padding: 50px 50px;
+  font-size: 28px;
+  line-height: 1.3333333;
+}
+
+.fc-event{
+    cursor: pointer;
+}

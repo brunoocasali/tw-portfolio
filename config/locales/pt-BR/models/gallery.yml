@@ -10,3 +10,4 @@ pt-BR:
         session: Ensaio
         description: Descrição
         kind: Tipo de Ensaio
+        show: Destaque na home do site?

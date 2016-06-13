@@ -30,6 +30,9 @@ gem 'compass-rails'
 gem 'image-picker-rails'
 gem 'devise-bootstrap-views'
 gem 'coffee-rails'
+gem 'momentjs-rails'
+gem 'fullcalendar-rails'
+gem 'dropzonejs-rails'
 
 # templating
 gem 'simple_form'
@@ -40,6 +43,8 @@ gem 'kaminari'
 gem 'country_select'
 gem 'enumerate_it'
 gem 'responders'
+gem 'brazilian-rails'
+gem 'jbuilder'
 
 # uploading
 gem 'carrierwave'
@@ -48,11 +53,16 @@ gem 'fog'
 
 group :development, :test do
   gem 'pry-rails'
-  gem 'spring'
 
   gem 'dotenv'
+  gem 'forgery'
 end
 
 group :production do
   gem 'rails_12factor'
+end
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-jQuery-Mask-Plugin', '~> 1.14.0'
+  gem 'rails-assets-angular'
 end

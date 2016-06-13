@@ -1,0 +1,27 @@
+pt-BR:
+  delivery_contents:
+    title: 'Conteúdos de Entregas'
+
+  welcome:
+    title: 'Bem-Vindo(a)!'
+
+  contacts:
+    title: 'Contatos'
+
+  clients:
+    title: 'Clientes'
+
+  sessions:
+    title: 'Ensaios'
+
+  print_requests:
+    title: 'Requisições de Impressão'
+
+  galleries:
+    title: 'Galerias'
+
+  newsletters:
+    title: 'Espectadores'
+
+  projects:
+    title: 'Projetos'

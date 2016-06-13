@@ -1,0 +1,57 @@
+.col-sm-12
+  h2
+    = t('show_a', m: t('.title'), id: @print_request.id)
+
+.col-sm-6
+  fieldset
+    legend Dados Básicos do solicitante
+
+    p
+      = "#{ta(User, :name)}: #{@print_request.requestor.name}"
+    p
+      = raw "#{ta(User, :email)}: #{mail_to(@print_request.requestor.email)}"
+    p
+      = "#{ta(User, :phone)}: #{@print_request.requestor.phone}"
+
+  fieldset
+    legend Endereço
+
+    p
+      = "#{ta(Address, :nick)}: #{@print_request.requestor.address.nick}"
+    p
+      = "#{ta(Address, :reference)}: #{@print_request.requestor.address.reference}"
+    p
+      = "#{ta(Address, :street)}: #{@print_request.requestor.address.street}"
+
+    p
+      = "#{ta(Address, :city)} - #{ta(Address, :state)}: #{@print_request.requestor.address.city} - #{@print_request.requestor.address.state}"
+
+.col-sm-6
+  fieldset
+    legend Sobre a impressão requerida
+
+    p
+      = image_tag @print_request.medium.filename.url, class: 'img-thumbnail', width: '100%'
+    p
+      = "#{ta(PrintRequest, :quantity)}: #{@print_request.quantity}"
+      span.pull-right = "#{ta(PrintRequest, :size)}: #{@print_request.print_size}"
+
+    p
+      = raw "<strong>#{ta(PrintRequest, :message)}: </strong>"
+      -  if @print_request.message?
+        = @print_request.message
+      - else
+        span.text-muted O solicitante não deixou nenhuma mensagem.
+
+
+.col-sm-12
+  fieldset
+    legend Ações
+
+    = link_to t('.buttons.processed'), edit_client_path(@print_request.requestor), class: 'btn btn-danger btn-sm'
+    | &nbsp;
+    = link_to t('.buttons.confirmed'), edit_client_path(@print_request.requestor), class: 'btn btn-danger btn-sm'
+    | &nbsp;
+    = link_to t('.buttons.finished'), edit_client_path(@print_request.requestor), class: 'btn btn-danger btn-sm'
+    | &nbsp;
+    = link_to t('back'), clients_path, class: 'btn btn-default btn-sm'

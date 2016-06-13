@@ -7,6 +7,6 @@ pt-BR:
     attributes:
       project:
         status: Situação
-        code: Código do Ensaio
+        code: Código do Projeto
         name: Nome
         client: Cliente

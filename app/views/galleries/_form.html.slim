@@ -1,0 +1,16 @@
+= f.error_notification
+
+- if params[:next].nil?
+  .form-inputs
+    .row
+      .col-sm-8
+        = f.input :name
+      .col-sm-4
+        = f.input :kind, collection: GalleryKind.to_a
+      .col-sm-12
+        = f.input :description, as: :text
+      .col-sm-12(style="padding-left: 0px !important;")
+        = f.input :show
+
+.form-actions
+  = f.button :submit, (t('.new_btn') unless params[:next].nil?), class: 'btn-sm'

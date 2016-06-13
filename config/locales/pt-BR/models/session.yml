@@ -6,7 +6,8 @@ pt-BR:
         other: Ensaios
     attributes:
       session:
-        date_at: Data
+        start_at: Começa
+        finish_at: Termina
         project: Projeto
         status: Situação
         address: Local

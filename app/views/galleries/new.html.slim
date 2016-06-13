@@ -1,0 +1,7 @@
+h2
+  = t('new_a', m: tm(Gallery))
+  = link_to t('back'), client_project_galleries_path(@client, @project), class: 'btn btn-default btn-sm pull-right'
+
+
+= simple_form_for(@gallery, url: client_project_galleries_url(@client, @project), html: { multipart: true }) do |f|
+  == render partial: 'form', locals: { f: f }

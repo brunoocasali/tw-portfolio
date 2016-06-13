@@ -1,0 +1,17 @@
+.col-sm-8
+
+  h2
+    = t('show', m: tm(Contact), id: @contact.id)
+    = link_to t('back'), contacts_path, class: 'btn btn-default btn-sm pull-right'
+
+  = simple_form_for(@contact, defaults: { input_html: { disabled: true } }) do |f|
+    .form-inputs
+      .row
+        .form-group.col-sm-6
+          = f.input :name
+        .form-group.col-sm-6
+          = f.input :email
+        .form-group.col-sm-12
+          = f.input :created_at, as: :string, input_html: { value: l(f.object.created_at, format: :short) }
+        .form-group.col-sm-12
+          = f.input :message, input_html: { rows: 5 }

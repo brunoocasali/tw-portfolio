@@ -1,0 +1,11 @@
+head
+  title = @delivery.title
+  meta(content='text/html; charset=UTF-8' http-equiv='Content-Type')
+
+  style
+    | .container img.wide { max-width: 100%; max-height: 100%; height: auto; }
+
+body
+ .container
+   = link_to @delivery.action_url, title: 'Visitar Link' do
+    = image_tag @delivery.medium.filename_url, class: 'wide'

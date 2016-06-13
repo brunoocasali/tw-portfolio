@@ -1,0 +1,13 @@
+pt-BR:
+  print_requests:
+    index:
+      buttons:
+        manage_projects: Gerenciar projetos
+        manage_project: Gerenciar projeto
+        create_project: Criar projeto
+    show:
+      title: Requisição de Impressão
+      buttons:
+        processed: Processar Pedido
+        confirmed: Confirmar
+        finished: Finalizar

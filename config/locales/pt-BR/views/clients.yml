@@ -1,0 +1,15 @@
+pt-BR:
+  clients:
+    index:
+      title: Clientes
+      title_singular: Cliente
+      buttons:
+        manage_projects: Gerenciar projetos
+        manage_project: Gerenciar projeto
+        create_project: Criar projeto
+    new:
+      title: Cliente
+    edit:
+      title: Cliente
+    show:
+      title: Cliente
