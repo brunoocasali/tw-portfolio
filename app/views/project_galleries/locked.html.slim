@@ -1,0 +1,26 @@
+= render 'devise/shared/header'
+
+.container.content-section.text-center
+  .row
+    h2 OPS! Infelizmente o projeto ainda não está disponível
+
+    .col-sm-12(style="margin-top: 14px")
+      p(style="font-size: 16px") Mas deixe seu nome e email, que lhe aviso assim que sair do forno!
+
+    = simple_form_for @newsletter, url: project_gallery_path(@project.code), method: :put, defaults: {input_html: {class: 'input-lg'}} do |f|
+
+      .col-lg-6.col-lg-offset-3
+        .form-group.has-feedback.has-feedback-left
+          label.control-label.sr-only Nome
+          = f.input :name, placeholder: 'Marcelo Mathias', label: false
+          i.form-control-feedback.fa.fa-user.fa-lg.fa-fw
+
+      .col-lg-6.col-lg-offset-3
+        .form-group.has-feedback.has-feedback-left
+          label.control-label.sr-only Email
+          = f.input :email, placeholder: 'marcelo_mathiass@hotmail.com', label: false
+          i.form-control-feedback.fa.fa-at.fa-lg.fa-fw
+
+      .col-lg-6.col-lg-offset-3
+        .form-group
+          = f.button :submit, 'Quero ser avisado!', class: 'btn-block'

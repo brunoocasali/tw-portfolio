@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  # friendly url here.
+  resources :project_galleries, param: :code, only: [:update, :index] do
+    get :unlock, on: :collection
+
+    member do
+      get :locked
+    end
+  end
+
   resources :welcome, only: :index do
     get :sessions, on: :collection
   end
@@ -9,6 +18,7 @@ Rails.application.routes.draw do
     root 'welcome#index', as: :authenticated_root
   end
 
+  # admin only:
   resources :contacts, only: [:create, :show, :index, :delete]
 
   resources :galleries, only: :none do
@@ -23,7 +33,7 @@ Rails.application.routes.draw do
     resources :projects, except: :show do
       get :dashboard, on: :member
 
-      resources :newsletters, except: [:new, :edit, :update, :show]
+      resources :newsletters, only: :index
       resources :sessions, only: [:destroy, :create, :index] do
         member do
           get :wait
