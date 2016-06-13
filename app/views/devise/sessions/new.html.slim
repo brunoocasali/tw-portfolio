@@ -1,18 +1,57 @@
-.panel.panel-default.devise-bs
-  .panel-heading
-    h4
-      = t('.sign_in', :default => "Sign in")
-  .panel-body
-    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: "form" }) do |f|
-      .form-group
-        = f.label :email
-        = f.email_field :email, autofocus: true, class: "form-control"
-      .form-group
-        = f.label :password
-        = f.password_field :password, autocomplete: "off", class: "form-control"
-      - if devise_mapping.rememberable?
-        .checkbox
-          = f.check_box :remember_me
-          = f.label :remember_me
-      = f.submit  t('.sign_in', :default => "Sign in"), class: "btn btn-danger btn-block"
-= render "devise/shared/links"
+nav.navbar.navbar-custom.navbar-fixed-top role="navigation"
+  .container
+    .navbar-header
+      button.navbar-toggle data-target=".navbar-main-collapse" data-toggle="collapse" type="button"
+        i.fa.fa-bars
+      a.navbar-brand.page-scroll href="/#page-top"
+        i.fa.fa-camera
+        | &nbsp;
+        span.light TATIANA
+        | WACELKOSKI
+
+    /! Collect the nav links, forms, and other content for toggling
+    .collapse.navbar-collapse.navbar-right.navbar-main-collapse
+      ul.nav.navbar-nav
+        /! Hidden li included to remove active class from about link when scrolled up past about section
+        li.hidden
+          a href="/#page-top"
+        li
+          a.page-scroll href="/#about" Sobre
+        li
+          a.page-scroll href="/#download" Trabalhos
+        li
+          a.page-scroll href="/#contact" Contato
+        li
+          = link_to 'Acessar', new_user_session_url, class: 'page-scroll'
+
+section#sign-in.container.content-section.text-center
+  .row
+    .col-lg-6.col-lg-offset-3
+      h2 ÁREA RESTRITA
+
+      = simple_form_for resource, as: resource_name, url: session_path(resource_name), defaults: { label: false, input_html: { class: 'input-lg' } } do |f|
+
+        .row
+          .form-group.has-feedback.has-feedback-left
+            label.control-label.sr-only Email
+            = f.input :email, placeholder: 'maria_lima@gmail.com'
+            i.form-control-feedback.fa.fa-at.fa-lg.fa-fw
+
+          .form-group.has-feedback.has-feedback-left
+            label.control-label.sr-only Senha
+            = f.input :password, as: :password, placeholder: '•••••••••••'
+            i.form-control-feedback.fa.fa-lock.fa-lg.fa-fw
+
+          .form-group.pull-left
+            - if devise_mapping.rememberable?
+              .checkbox
+                = f.check_box :remember_me
+                = f.label :remember_me
+
+
+          .form-group
+            = f.submit 'LOGIN', class: 'btn btn-default btn-block pull-left'
+
+  br
+
+  = render 'devise/shared/links'
