@@ -73,8 +73,10 @@ body
         br
 
         p
-          | Ou você pode me contactar pelo email:&nbsp;
+          | Você também pode me contactar pelo email:&nbsp;
           a href="mailto:ola@wacelkoski.com" ola@wacelkoski.com
+          br
+          | Ou se preferir, estou nas redes sociais:
 
         ul.list-inline.banner-social-buttons
           li
@@ -92,5 +94,14 @@ body
 
   /! Footer
   footer
-    .container.text-center
-      p Copyright © Your Website 2014
+    .container.text-muted
+      .col-sm-7.text-right
+        p(style='font-size: 15px') Copyright © Tatiana Wacelkoski, 2016
+      .col-sm-5.text-right
+        p(style='font-size: 15px')
+          | Developed with&nbsp;
+          i.fa.fa-heart.text-danger &nbsp;
+          | by:
+          a(href="http://brunoocasali.xyz" target="_blank")
+            = image_tag 'bc-logo.png', style: 'width: 48px; margin-left: 12px'
+

@@ -398,7 +398,7 @@ body {
   padding-left: 46px;
 }
 .has-feedback-left .form-control-feedback {
-  left: 0;
+  left: 7px;
 }
 .form-control-feedback {
   line-height: 34px !important;
@@ -417,7 +417,7 @@ body {
 }
 .has-feedback label.sr-only ~ .form-control-feedback,
 .has-feedback label.sr-only ~ div .form-control-feedback {
-  top: 4px;
+  top: 10px;
 }
 @media (min-width: 768px) {
   .form-inline .inline-feedback {
@@ -436,11 +436,10 @@ body {
 /* Display Awesome fields */
 
 .form-control {
-  background-color: black;
   color: white;
 
   border: 1px solid #42dca3;
-  color: #42dca3;
+  // color: #42dca3;
   background-color: transparent;
   border-radius: 0;
 }
@@ -453,12 +452,21 @@ body {
   border-color: #1bd28e;
 }
 
-input::-webkit-input-placeholder
-{
-  color: #447563 !important;
+.alert-fixed {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 9999;
+    border-radius: 0px;
 }
 
-textarea::-webkit-input-placeholder
-{
-  color: #447563 !important;
+/* heart animation */
+
+p > .fa-heart {
+  transition: font-size 0.35s ease;
+}
+
+p > .fa-heart:hover {
+ font-size: 22px;
 }

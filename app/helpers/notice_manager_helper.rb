@@ -1,7 +1,7 @@
 module NoticeManagerHelper
-  def notices
+  def notices(classes = nil)
     flash.reject { |_, m| m.eql? true }.collect do |key, msg|
-      content_tag :div, id: 'bootstrap-alert', class: "alert alert-#{alert_class_finder(key)}", role: :alert do
+      content_tag :div, id: 'bootstrap-alert', class: "alert alert-#{alert_class_finder(key)} #{classes}", role: :alert do
         concat(msg).concat(content_tag(:button, '×', class: 'close', data: { dismiss: 'alert' }))
       end
     end.join.html_safe
