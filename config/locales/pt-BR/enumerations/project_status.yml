@@ -3,5 +3,5 @@ pt-BR:
     project_status:
       working: 'Trabalhando'
       waiting_payment: 'Aguardando Pagamento'
-      lauched: 'Lançado'
+      launched: 'Lançado'
       initiated: 'Iniciado'

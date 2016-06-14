@@ -1,5 +1,6 @@
 class ProjectGalleriesController < ApplicationController
   before_action :set_project
+  before_action :can_show_project?, only: :index
 
   skip_before_action :authenticate_user!
 
@@ -7,12 +8,18 @@ class ProjectGalleriesController < ApplicationController
   end
 
   def unlock
+    binding.pry
+    if params.key? :project
+      set_project(params[:project][:code])
+
+      redirect_to project_gallery_path(@project.code)
+    end
   end
 
   def locked
     @newsletter = @project.newsletters.build
 
-    respond_with(@newsletter, location: locked_project_gallery_path(@project))
+    respond_with(@newsletter, location: locked_project_gallery_path(@project.code))
   end
 
   def update
@@ -29,8 +36,16 @@ class ProjectGalleriesController < ApplicationController
 
   private
 
-  def set_project
+  def set_project(code = params[:code])
     @project = Project.find_by_code(params[:code])
+  end
+
+  def can_show_project?
+    unless @project.launched?
+      flash.now[:warning] = 'Estamos trabalhando neste projeto no momento!'
+
+      redirect_to locked_project_gallery_path(@project.code), warning: 'Desculpe! mas este projeto ainda não está disponível!'
+    end
   end
 
   def newsletter_params

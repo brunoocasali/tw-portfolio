@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  # friendly url here.
-  resources :project_galleries, param: :code, only: [:update, :index] do
+  resources :project_galleries, path: 'ensaios', param: :code, only: :update do
     get :unlock, on: :collection
 
     member do
       get :locked
+      get :index
     end
   end
 
@@ -47,5 +47,6 @@ Rails.application.routes.draw do
     end
   end
 
+  match '*path', to: 'content_holding#check', via: :all
   root 'home#index' # to: redirect('/users/sign_in')
 end

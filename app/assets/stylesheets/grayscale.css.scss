@@ -470,3 +470,8 @@ p > .fa-heart {
 p > .fa-heart:hover {
  font-size: 22px;
 }
+
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
