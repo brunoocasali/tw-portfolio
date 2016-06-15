@@ -1,5 +1,5 @@
 class BaseMailer < ApplicationMailer
-  def about_work(emails)
+  def about_work(emails, project_id)
     mail(to: emails, subject: 'Tatiana Wacelkoski: Sobre Meu Trabalho')
   end
 
