@@ -22,7 +22,10 @@
 //= require fittext
 //= require image-picker
 //= require jQuery-Mask-Plugin
+//= require wookmark-jquery
+//= require magnific-popup
 //= require dropzone
+//= require imagesloaded-packaged
 //= require core
 //= require_self
 
@@ -140,3 +143,23 @@ Dropzone.options.mediaDropzone = {
     });
   }
 };
+
+(function ($) {
+  // Prepare layout options.
+  var wookmark;
+  // Init lightbox
+  $('#myContent').magnificPopup({
+    delegate: 'li:not(.inactive) a',
+    type: 'image',
+    gallery: {
+      enabled: true
+    }
+  });
+  // Call the layout function after all images have loaded
+  imagesLoaded('#myContent', function () {
+    wookmark = new Wookmark('#myContent', {
+      offset: 2, // Optional, the distance between grid items
+      itemWidth: 210 // Optional, the width of a grid item
+    });
+  });
+})(jQuery);

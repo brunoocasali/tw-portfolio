@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :works, path: 'trabalhos'
+
   resources :welcome, only: :index do
     get :sessions, on: :collection
   end
@@ -33,7 +35,13 @@ Rails.application.routes.draw do
     resources :projects, except: :show do
       get :dashboard, on: :member
 
-      resources :newsletters, only: :index
+      resources :newsletters, only: :index do
+        collection do
+          post :mail_about_work
+          post :mail_project_almost_done
+        end
+      end
+
       resources :sessions, only: [:destroy, :create, :index] do
         member do
           get :wait
@@ -47,6 +55,6 @@ Rails.application.routes.draw do
     end
   end
 
-  match '*path', to: 'content_holding#check', via: :all
+  match '*path', to: 'content_holding#check', via: :get
   root 'home#index' # to: redirect('/users/sign_in')
 end

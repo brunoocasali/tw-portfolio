@@ -270,5 +270,4 @@ Rails.application.config.to_prepare do
   Devise::ConfirmationsController.layout 'devise'
   Devise::UnlocksController.layout 'devise'
   Devise::PasswordsController.layout 'devise_gray'
-  ProjectGalleriesController.layout 'devise_gray'
 end

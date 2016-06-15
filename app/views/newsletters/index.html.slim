@@ -5,11 +5,11 @@ h2
 - unless @newsletters.empty?
   p(style='vertical-align: middle')
     | Interaja com os espectadores, mandando um recadinho: &nbsp; &nbsp;
-    = link_to '#', class: 'btn btn-sm btn-danger', disabled: true do
+    = link_to mail_about_work_client_project_newsletters_path(@client, @project), method: :post, class: 'btn btn-sm btn-danger' do
         span.fa.fa-star aria-hidden="true" &nbsp;
         |  sobre o seu trabalho
 
-    = link_to '#', class: 'btn btn-sm btn-danger', disabled: true do
+    = link_to mail_project_almost_done_client_project_newsletters_path(@client, @project), method: :post, class: 'btn btn-sm btn-danger' do
         span.fa.fa-clock-o aria-hidden="true" &nbsp;
         |  está quase pronto!
 

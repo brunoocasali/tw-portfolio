@@ -2,13 +2,13 @@ class ProjectGalleriesController < ApplicationController
   before_action :set_project
   before_action :can_show_project?, only: :index
 
+  layout 'devise_gray'
+
   skip_before_action :authenticate_user!
 
-  def index
-  end
+  def index; end
 
   def unlock
-    binding.pry
     if params.key? :project
       set_project(params[:project][:code])
 

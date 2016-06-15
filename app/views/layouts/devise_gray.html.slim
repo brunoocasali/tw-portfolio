@@ -22,6 +22,8 @@ html
 
   body#page-top[data-spy="scroll" data-target=".navbar-fixed-top"]
     = notices('alert-fixed')
+
+    = render 'devise/shared/header'
     = yield
 
     = javascript_include_tag 'application'

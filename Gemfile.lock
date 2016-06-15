@@ -332,7 +332,24 @@ GEM
       railties (= 4.2.6)
       sprockets-rails
     rails-assets-angular (1.4.9)
+    rails-assets-eventEmitter (4.3.0)
+    rails-assets-eventie (1.0.6)
+    rails-assets-imagesloaded (3.1.8)
+      rails-assets-eventEmitter (~> 4.0)
+      rails-assets-eventie (>= 1.0.4, < 2)
+    rails-assets-imagesloaded-packaged (3.1.4)
     rails-assets-jQuery-Mask-Plugin (1.14.0)
+    rails-assets-jquery (1.12.4)
+    rails-assets-magnific-popup (1.0.1)
+      rails-assets-jquery (>= 1.8.0)
+    rails-assets-normalize.css (3.0.3)
+    rails-assets-requirejs (2.1.22)
+    rails-assets-wookmark-jquery (2.1.2)
+      rails-assets-imagesloaded (~> 3.1.8)
+      rails-assets-jquery (~> 1.11)
+      rails-assets-magnific-popup (~> 1.0.0)
+      rails-assets-normalize.css (~> 3.0.2)
+      rails-assets-requirejs (~> 2.1.16)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -446,7 +463,10 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.6)
   rails-assets-angular!
+  rails-assets-imagesloaded-packaged!
   rails-assets-jQuery-Mask-Plugin (~> 1.14.0)!
+  rails-assets-magnific-popup!
+  rails-assets-wookmark-jquery!
   rails_12factor
   responders
   sass-rails
