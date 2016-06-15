@@ -9,7 +9,7 @@ class NewslettersController < ApplicationController
   def mail_about_work
     newsletters = @project.newsletters
 
-    MailerJob.perfom(newsletters.map(&:email), :about_work, @project.id)
+    Delayed::Job.enqueue(MailerJob.new(newsletters.map(&:email), :about_work, @project.id))
 
     respond_with(newsletters, location: client_project_newsletters_path(@client, @project), notice: t('processing_mails'))
   end
