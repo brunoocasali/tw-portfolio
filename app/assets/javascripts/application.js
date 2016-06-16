@@ -22,10 +22,11 @@
 //= require fittext
 //= require image-picker
 //= require jQuery-Mask-Plugin
-//= require wookmark-jquery
-//= require magnific-popup
 //= require dropzone
-//= require imagesloaded-packaged
+//= require isotope
+//= require fullpage
+//= require lemmon-slider
+//= require prettyPhoto
 //= require core
 //= require_self
 
