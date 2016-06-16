@@ -1,6 +1,6 @@
-var App = angular.module('app', []);
-
-App.controller('ProjectsController', function($scope) {});
+$('.alert').fadeTo(3000, 500).slideUp(500, function(){
+  $('#bootstrap-alert').alert('close');
+});
 
 function loadCEP(){
     var cep = $("#zipcode").val();

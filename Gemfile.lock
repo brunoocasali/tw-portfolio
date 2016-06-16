@@ -361,8 +361,8 @@ GEM
     rails-assets-fizzy-ui-utils (1.0.1)
       rails-assets-doc-ready (~> 1.0.4)
       rails-assets-matches-selector (~> 1.0.2)
-    rails-assets-fullpage (2.8.1)
-      rails-assets-jquery (>= 1.6.0)
+    rails-assets-fullpage (2.6.1)
+      rails-assets-jquery (~> 1.0)
     rails-assets-get-size (1.2.2)
       rails-assets-get-style-property (~> 1.0)
     rails-assets-get-style-property (1.0.4)
@@ -372,7 +372,7 @@ GEM
       rails-assets-masonry (>= 3.1.5, < 4)
       rails-assets-outlayer (>= 1.2.0, < 2)
     rails-assets-jQuery-Mask-Plugin (1.14.0)
-    rails-assets-jquery (3.0.0)
+    rails-assets-jquery (1.12.4)
     rails-assets-masonry (3.3.2)
       rails-assets-fizzy-ui-utils (~> 1.0.1)
       rails-assets-get-size (~> 1.2.2)
@@ -497,7 +497,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.6)
   rails-assets-angular!
-  rails-assets-fullpage!
+  rails-assets-fullpage (= 2.6.1)!
   rails-assets-isotope (= 2.0.0)!
   rails-assets-jQuery-Mask-Plugin (~> 1.14.0)!
   rails_12factor
