@@ -48,7 +48,7 @@ gem 'jbuilder'
 
 # uploading
 gem 'carrierwave'
-gem 'mini_magick'
+gem 'rmagick'
 gem 'fog'
 
 group :development, :test do

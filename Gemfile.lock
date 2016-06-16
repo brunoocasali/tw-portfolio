@@ -296,7 +296,6 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_magick (4.5.1)
     mini_portile2 (2.0.0)
     minitest (5.9.0)
     momentjs-rails (2.11.1)
@@ -378,6 +377,7 @@ GEM
       trollop
     responders (2.1.2)
       railties (>= 4.2.0, < 5.1)
+    rmagick (2.15.4)
     sass (3.4.22)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -455,7 +455,6 @@ DEPENDENCIES
   jquery-easing-rails
   jquery-rails
   kaminari
-  mini_magick
   momentjs-rails
   passenger
   pg (~> 0.15)
@@ -469,6 +468,7 @@ DEPENDENCIES
   rails-assets-wookmark-jquery!
   rails_12factor
   responders
+  rmagick
   sass-rails
   simple_form
   slim-rails
