@@ -3,5 +3,6 @@ class WorksController < ApplicationController
   layout 'devise_gray'
 
   def index
+    @galleries = Project.launched.map(&:galleries).flatten.select(&:show?)
   end
 end

@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_client
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :dashboard]
+  before_action :set_project, except: [:index, :new]
 
   def index
     @projects = @client.projects.page(params[:page])
@@ -25,6 +25,13 @@ class ProjectsController < ApplicationController
     @project.update(project_params)
 
     respond_with @project, location: client_projects_path(@client)
+  end
+
+  def deliver
+    @project.launched!
+    @project.save!
+
+    respond_with @project, location: client_projects_path(@client), notice: 'Projeto disponibilizado com sucesso! Estamos preparando um email especial para todos os espectadores!'
   end
 
   def destroy

@@ -3,3 +3,7 @@ pt-BR:
     index:
       buttons:
         manage: Gerenciar
+
+    dashboard:
+      buttons:
+        deliver: Disponibilizar Projeto

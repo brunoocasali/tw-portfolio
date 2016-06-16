@@ -11,8 +11,7 @@ class NewslettersController < ApplicationController
 
     Delayed::Job.enqueue(MailerJob.new(newsletters.map(&:email), :about_work, @project.id))
 
-    flash.now[:notice] = t('processing_mails')
-    redirect_to client_project_newsletters_path(@client, @project)
+    respond_with @project, location: client_project_newsletters_path(@client, @project), notice: t('processing_mails')
   end
 
   def mail_project_almost_done; end

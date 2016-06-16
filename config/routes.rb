@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :clients do
     resources :projects, except: :show do
       get :dashboard, on: :member
+      post :deliver, on: :member
 
       resources :newsletters, only: :index do
         collection do

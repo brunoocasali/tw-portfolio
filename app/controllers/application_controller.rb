@@ -1,9 +1,9 @@
 require 'application_responder'
 
 class ApplicationController < ActionController::Base
-  add_flash_types :warning
-
   self.responder = ApplicationResponder
+
+  add_flash_types :warning
 
   protect_from_forgery with: :exception
   before_action :authenticate_user!, unless: 'devise_controller? || home_page?'

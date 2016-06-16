@@ -26,7 +26,8 @@ h2.text-center = raw("#{tm(Project)}: <b>#{@project.name}</b>")
           span.badge = PrintRequest.requested.count
 
   .row(style="margin-top: 50px")
-    .col-sm-6(style="margin-left: 5px")
+    .col-sm-12(style="margin-left: 5px")
       = link_to t('back'), :back, class: 'btn btn-sm btn-default'
       = link_to t('edit_btn'), edit_client_project_path(@client, @project), class: 'btn btn-sm btn-default'
       = link_to t('new', m: tm(Project)), new_client_project_url(@client), class: 'btn btn-sm btn-default'
+      = link_to t('.buttons.deliver'), deliver_client_project_path(@client, @project), method: :post, class: 'btn btn-sm btn-success pull-right'
