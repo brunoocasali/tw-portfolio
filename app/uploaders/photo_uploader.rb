@@ -24,7 +24,9 @@ class PhotoUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [130, 110]
   end
 
-  process :watermark
+  version :watermarked do
+    process :watermark
+  end
 
   def watermark
     manipulate! do |img|

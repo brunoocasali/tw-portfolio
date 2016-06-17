@@ -1,0 +1,22 @@
+nav.navbar.navbar-custom-inverse.navbar-fixed-top role="navigation"
+  .container
+    .navbar-header
+      button.navbar-toggle data-target=".navbar-main-collapse" data-toggle="collapse" type="button"
+        i.fa.fa-bars
+      a.navbar-brand-inverse.page-scroll href="/#page-top"
+        = image_tag 'logo.png', width: 120
+
+    /! Collect the nav links, forms, and other content for toggling
+    .collapse.navbar-collapse.navbar-right.navbar-main-collapse
+      ul.nav.navbar-nav
+        /! Hidden li included to remove active class from about link when scrolled up past about section
+        li.hidden
+          a href="/#page-top"
+        li
+          a.page-scroll href="/#about" Sobre
+        li
+          a.page-scroll href="/#download" Trabalhos
+        li
+          a.page-scroll href="/#contact" Contato
+        li
+          = link_to 'Acessar', new_user_session_url, class: 'page-scroll'

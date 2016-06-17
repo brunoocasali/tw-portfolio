@@ -1,5 +1,5 @@
 doctype html
-html
+html(ng-app="app")
   head
     meta[charset="utf-8"]
     meta[http-equiv="X-UA-Compatible" content="IE=edge"]
@@ -16,7 +16,6 @@ html
     = csrf_meta_tags
 
     link[href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"]
-    link[href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"]
 
     = stylesheet_link_tag 'grayscale'
 
@@ -32,6 +31,7 @@ html
   body#page-top[data-spy="scroll" data-target=".navbar-fixed-top"]
     = notices('alert-fixed')
 
+    = render 'devise/shared/header'
     = yield
 
     = javascript_include_tag 'application'

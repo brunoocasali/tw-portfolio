@@ -17,4 +17,4 @@ $assets.freeze
 $assets.flatten.each do |controller|
   Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.css"]
 end
-Rails.application.config.assets.precompile += ['jquery.old.js']
+Rails.application.config.assets.precompile += ['jquery.old.js', '*.woff', '*.woff2']

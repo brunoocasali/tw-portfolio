@@ -1,14 +1,11 @@
-h2 Procurando pelas suas fotos?
+h2.title-up Acesse suas fotos!
 
-= simple_form_for :project, url: unlock_project_galleries_path, defaults: {method: :post, input_html: {class: 'input-lg'}} do |f|
-  .row.no-gutter
-    .col-sm-7.col-sm-offset-2
-      .form-group.has-feedback.has-feedback-left
-        label.control-label.sr-only Código
-        = f.input :code, placeholder: 'ensaio-luana-14', label: false, input_html: { value: params[:code] }
-        i.form-control-feedback.fa.fa-unlock-alt.fa-lg.fa-fw
-
-    .col-sm-1
-      .form-group(style='margin-left: -41px;')
-        = button_tag(type: 'submit', class: 'btn btn-default input-lg') do
-            i.fa.fa-search.fa-lg.fa-fw
+= simple_form_for :project, url: unlock_project_galleries_path, html: {name: 'unlock_form'}, defaults: {input_html: {class: 'input-lg'}} do |f|
+  .col-sm-8.col-sm-offset-2
+    .input-group.has-feedback.has-feedback-left
+      label.control-label.sr-only Código
+      = f.input :code, placeholder: 'ensaio-luana-14', label: false, input_html: { required: true, 'ng-model': 'code', value: params[:code] }
+      i.form-control-feedback.fa.fa-unlock-alt.fa-lg.fa-fw
+      span.input-group-btn
+        = button_tag(type: 'submit', class: 'btn btn-default input-lg', 'ng-disabled': "!code.length" , method: :get) do
+          i.fa.fa-search.fa-lg.fa-fw
