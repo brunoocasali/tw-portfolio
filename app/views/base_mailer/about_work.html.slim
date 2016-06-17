@@ -1,11 +1,21 @@
-head
-  title = @delivery.title
-  meta(content='text/html; charset=UTF-8' http-equiv='Content-Type')
+- content_for :page_title do
+  | Sobre: Tatiana Wacelkoski Fotografias!
 
-  style
-    | .container img.wide { max-width: 100%; max-height: 100%; height: auto; }
-
-body
- .container
-   = link_to @delivery.action_url, title: 'Visitar Link' do
-    = image_tag @delivery.medium.filename_url, class: 'wide'
+table
+  tr
+    td
+      h3 Sobre!
+      p
+      p Sou uma aprendiz nas artes da fotografia ainda, minha especialidade é retratar momentos voltadas às mamães de 1°, 2°, 3°... viagem! E também do público infantil. Adoro o que faço, me sinto renovada a cada sorriso de uma criança que é fotografado.
+      = image_tag 'mailers/fotoGravida.jpg', alt: 'Foto Exemplo'
+      p.callout
+        | Procuro retratar os momentos mais delicados e espontâneos possíveis. &nbsp;
+        a href="http://wacelkoski.com/trabalhos" Veja meus últimos trabalhos...
+      h3 Fotografia é...
+      p
+      p Uma forma de congelar um momento especial, para que assim não fique gravado apenas em nossas memórias... É através da fotografia que conseguimos guardar as nossas recordações, lembrando o quanto representou aquele momento eternizado em uma simples imagem! Não é só eternizar momentos, é gravar naquela imagem todo sentimento que estava sendo transmitido naquele instante.
+      h4
+        small WACELKOSKI, T. 2016
+      br/
+      span style="float:right;"
+        a href="http://wacelkoski.com/#contact" Dúvidas?

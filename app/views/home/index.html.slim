@@ -1,96 +1,101 @@
-body
-  nav.navbar.navbar-custom.navbar-fixed-top role="navigation"
+header.intro
+  .intro-body
     .container
-      .navbar-header
-        button.navbar-toggle data-target=".navbar-main-collapse" data-toggle="collapse" type="button"
-          i.fa.fa-bars
-        a.navbar-brand.page-scroll href="#page-top"
-          i.fa.fa-camera
-          | &nbsp;
-          span.light TATIANA
-          | WACELKOSKI
+      .row
+        .col-md-8.col-md-offset-2
+          h1.brand-heading Olá, muito prazer Tatiana!
+          p.intro-text
+            | Aqui seus melhores momentos durarão para sempre.
+          a.btn.btn-circle.page-scroll href="#about"
+            i.fa.fa-angle-double-down.animated
 
-      /! Collect the nav links, forms, and other content for toggling
-      .collapse.navbar-collapse.navbar-right.navbar-main-collapse
-        ul.nav.navbar-nav
-          /! Hidden li included to remove active class from about link when scrolled up past about section
-          li.hidden
-            a href="#page-top"
-          li
-            a.page-scroll href="#about" Sobre
-          li
-            a.page-scroll href="#download" Trabalhos
-          li
-            a.page-scroll href="#contact" Contato
-          li
-            = link_to 'Acessar', new_user_session_url
 
-  header.intro
-    .intro-body
-      .container
-        .row
-          .col-md-8.col-md-offset-2
-            h1.brand-heading T. WACELKOSKI
-            p.intro-text
-              | Aqui seus melhores momentos duram para sempre.
-              br>/
-              | Created by brunoocasali.xyz
-            a.btn.btn-circle.page-scroll href="#about"
-              i.fa.fa-angle-double-down.animated
+/! últimos trabalhos
+  - listar 4 últimas galerias.
+  - ao clicar em uma dessa galeria, listar as imagens da galeria.
 
-  /! About Section
-  section#about.container.content-section.text-center
-    .row
+/! About Section
+section#find-my-project.container.content-section.text-center
+  = render 'project_galleries/unlock_form'
+
+  .col-sm-12(style="margin-top: 40px")
+    p(style="font-size: 15px")
+      | * Você deve possuir o código que está presente nos cartões de visita disponibilizados no evento.
+      br
+      | Não tem um código?&nbsp;
+      a href="/trabalhos" Veja outros trabalhos.
+
+section#about.content-section.text-center
+  .about-section
+    .container
       .col-lg-8.col-lg-offset-2
-        h2 About Grayscale
-        p
-          | Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on
-          a href="http://startbootstrap.com/template-overviews/grayscale/"  the preview page
-        p
-          | This theme features stock photos by
-          a href="http://gratisography.com/"  Gratisography
-          | along with a custom Google Maps skin courtesy of
-          a href="http://snazzymaps.com/"  Snazzy Maps
-        p Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.
+        h2.title-up Sobre mim
+        p Sou uma aprendiz nas artes da fotografia ainda, minha especialidade é retratar momentos voltadas às mamães de 1°, 2°, 3°... viagem! E também do público infantil. Adoro o que faço, me sinto renovada a cada sorriso de uma criança que é fotografado.
 
-  /! Download Section
-  section#download.content-section.text-center
-    .download-section
-      .container
-        .col-lg-8.col-lg-offset-2
-          h2 Download Grayscale
-          p You can download Grayscale for free on the preview page at Start Bootstrap.
-          a.btn.btn-default.btn-lg href="http://startbootstrap.com/template-overviews/grayscale/"  Visit Download Page
+section#works.content-section.text-center(style="margin-bottom: 20em")
+  h2.title-up Últimos Trabalhos
 
-  /! Contact Section
-  section#contact.container.content-section.text-center
-    .row
-      .col-lg-8.col-lg-offset-2
-        h2 Fale comigo!
-        p Sinta-se à vontade em enviar suas dúvidas, críticas ou sugestões sobre meu trabalho abaixo.
+  .container(style="position: absolute !important; width: 100%; z-index: 101")
+    .gallery_holder
+      ul.gallery_inner.v4
+        li.grayscale
+          a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery01-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
+            img alt=("Fashion Workshop") height="600" src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery01-1024x576.jpg" width="600" /
+        li.grayscale
+          a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery02-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
+            img alt=("Light Bulbs") height="600" src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery02-1024x576.jpg" width="600" /
+        li.grayscale
+          a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery03-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
+            img alt=("Subway Sign") height="600" src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery03-1024x576.jpg" width="600" /
+        li.grayscale
+          a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery03-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
+            img alt=("Subway Sign") height="600" src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery03-1024x576.jpg" width="600" /
 
-        == render 'contacts/form'
+    p.text-center
+      a.btn.btn-default(style="margin-top: 20px" href="/trabalhos")
+        span.network-name veja mais...
+
+
+/! Contact Section
+section#contact.container.content-section.text-center
+  .row
+    .col-lg-8.col-lg-offset-2
+      h2.title-up Fale comigo!
+      p Sinta-se à vontade em me pedir um orçamento ou enviar suas dúvidas, críticas/sugestões sobre meu trabalho abaixo.
+
+      == render 'contacts/form'
+      br
+
+      p
+        | Você também pode me contactar pelo email:&nbsp;
+        a href="mailto:ola@wacelkoski.com" ola@wacelkoski.com
         br
+        | Ou se preferir, estou nas redes sociais:
 
-        p
-          | Ou você pode me contactar pelo email:&nbsp;
-          a href="mailto:ola@wacelkoski.com" ola@wacelkoski.com
-
-        ul.list-inline.banner-social-buttons
-          li
-            a.btn.btn-default.btn-lg href="https://facebook.com/wacelkoski"
-              i.fa.fa-facebook.fa-fw
-              span.network-name Facebook
-          li
-            a.btn.btn-default.btn-lg href="https://instagram.com/wacelkoski"
-              i.fa.fa-instagram.fa-fw
-              span.network-name Instagram
+      ul.list-inline.banner-social-buttons
+        li
+          a.btn.btn-default.btn-lg href="https://facebook.com/wacelkoski"
+            i.fa.fa-facebook.fa-fw
+            span.network-name Facebook
+        li
+          a.btn.btn-default.btn-lg href="https://instagram.com/wacelkoski"
+            i.fa.fa-instagram.fa-fw
+            span.network-name Instagram
 
 
-  /! Map Section
-  #map
+/! Map Section
+#map
 
-  /! Footer
-  footer
-    .container.text-center
-      p Copyright © Your Website 2014
+/! Footer
+footer
+  .container.text-muted
+    .col-sm-7.text-right
+      p(style='font-size: 15px') Copyright © Tatiana Wacelkoski, 2016
+    .col-sm-5.text-right
+      p(style='font-size: 15px')
+        | Developed with&nbsp;
+        i.fa.fa-heart.text-danger &nbsp;
+        | by:
+        a(href="http://brunoocasali.xyz" target="_blank")
+          = image_tag 'bc-logo.png', style: 'width: 48px; margin-left: 12px'
+

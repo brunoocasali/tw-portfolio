@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :destroy]
+  skip_before_action :authenticate_user!, only: :create
 
   def index
     @contacts = Contact.order(status: :asc).page(params[:page])
@@ -23,10 +24,17 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = Contact.new(group_params)
-    @contact.save
+    @contact = Contact.new(contact_params)
 
-    respond_with(@contact)
+    if @contact.save
+      ContactMailer.new_contact(@contact.id).deliver!
+
+      redirect_to root_path, notice: 'Entraremos em contato em breve!'
+    else
+      flash.now[:alert] = 'Não foi possível enviar sua mensagem.'
+
+      render template: 'home/index', layout: 'home_page'
+    end
   end
 
   def destroy
@@ -41,7 +49,7 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
   end
 
-  def group_params
-    params.require(:group).permit(:name, :email, :status, :message)
+  def contact_params
+    params.require(:contact).permit(:name, :email, :status, :message)
   end
 end

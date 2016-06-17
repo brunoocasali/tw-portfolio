@@ -6,11 +6,15 @@ class NewslettersController < ApplicationController
     @newsletters = @project.newsletters.order(created_at: :asc).page(params[:page])
   end
 
-  def create
-    @newsletter = Newsletter.new(newsletter_params)
+  def mail_about_work
+    newsletters = @project.newsletters
 
-    respond_with @newsletter, location: client_project_newsletters_path(@client, @project)
+    Delayed::Job.enqueue(MailerJob.new(newsletters.map(&:email), :about_work, @project.id))
+
+    respond_with @project, location: client_project_newsletters_path(@client, @project), notice: t('processing_mails')
   end
+
+  def mail_project_almost_done; end
 
   private
 
@@ -20,9 +24,5 @@ class NewslettersController < ApplicationController
 
   def set_project
     @project = @client.projects.find(params[:project_id])
-  end
-
-  def newsletter_params
-    params.require(:newsletter).permit(:name, :email, :project_id)
   end
 end

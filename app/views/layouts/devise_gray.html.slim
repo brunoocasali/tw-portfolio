@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    meta[charset="utf-8"]
+    meta[http-equiv="X-UA-Compatible" content="IE=edge"]
+    meta[name="viewport" content="width=device-width, initial-scale=1"]
+    meta[name="description" content="Portfólio fotográfico da Tatiana Wacelkoski: Chás de bebê, ensaios de gestantes, e festas infantis. Aqui seus melhores momentos duram para sempre."]
+    meta[name="author" content="Bruno Casali - http://brunoocasali.xyz"]
+
+    title Tatiana Wacelkoski - Portfólio
+
+    = favicon_link_tag
+    = stylesheet_link_tag 'application', actual_asset('gallery'), media: 'all'
+    = stylesheet_link_tag 'application'
+
+    = csrf_meta_tags
+
+    link[href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"]
+
+    = stylesheet_link_tag 'grayscale'
+
+  body#page-top[data-spy="scroll" data-target=".navbar-fixed-top"]
+    = notices('alert-fixed')
+
+    = render 'devise/shared/header_inverted'
+    = yield
+
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'grayscale'
+    = javascript_include_tag 'application', actual_asset('gallery')

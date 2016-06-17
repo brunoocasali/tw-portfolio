@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  resources :project_galleries, path: 'ensaios', param: :code, only: :update do
+    post :unlock, on: :collection
+
+    member do
+      get :locked
+      get :index
+    end
+  end
+
+  resources :works, path: 'trabalhos'
+
   resources :welcome, only: :index do
     get :sessions, on: :collection
   end
@@ -9,6 +20,7 @@ Rails.application.routes.draw do
     root 'welcome#index', as: :authenticated_root
   end
 
+  # admin only:
   resources :contacts, only: [:create, :show, :index, :delete]
 
   resources :galleries, only: :none do
@@ -22,8 +34,15 @@ Rails.application.routes.draw do
   resources :clients do
     resources :projects, except: :show do
       get :dashboard, on: :member
+      post :deliver, on: :member
 
-      resources :newsletters, except: [:new, :edit, :update, :show]
+      resources :newsletters, only: :index do
+        collection do
+          post :mail_about_work
+          post :mail_project_almost_done
+        end
+      end
+
       resources :sessions, only: [:destroy, :create, :index] do
         member do
           get :wait
@@ -38,4 +57,5 @@ Rails.application.routes.draw do
   end
 
   root 'home#index' # to: redirect('/users/sign_in')
+  match '*path', to: 'content_holding#check', via: :get
 end

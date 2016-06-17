@@ -1,5 +1,5 @@
 doctype html
-html
+html(ng-app="app")
   head
     meta[charset="utf-8"]
     meta[http-equiv="X-UA-Compatible" content="IE=edge"]
@@ -9,14 +9,13 @@ html
 
     title Tatiana Wacelkoski - Portfólio
 
-    = stylesheet_link_tag 'application', media: 'all'
+    = favicon_link_tag
+    = stylesheet_link_tag 'application', actual_asset('gallery'), media: 'all'
+    = stylesheet_link_tag 'application'
 
-    link[href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/united/bootstrap.min.css" rel="stylesheet" integrity="sha384-0UBL8wxZ28kqJ8w8N8RUV0odBG5w8D/Y+rb+o7hr2F3dS9twlAE8S7VUtVSRe5cc" crossorigin="anonymous"]
-    = favicon_link_tag 'icon.png'
     = csrf_meta_tags
 
     link[href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"]
-    link[href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"]
 
     = stylesheet_link_tag 'grayscale'
 
@@ -30,8 +29,11 @@ html
       ga('send', 'pageview');
 
   body#page-top[data-spy="scroll" data-target=".navbar-fixed-top"]
+    = notices('alert-fixed')
+
+    = render 'devise/shared/header'
     = yield
 
     = javascript_include_tag 'application'
-    script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false" type="text/javascript"
+    = javascript_include_tag 'application', actual_asset('gallery')
     = javascript_include_tag 'grayscale'

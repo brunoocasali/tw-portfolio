@@ -1,12 +1,24 @@
-= bootstrap_devise_error_messages!
-.panel.panel-default.devise-bs
-  .panel-heading
-    h4
-      = t('.forgot_your_password', :default => 'Forgot your password?')
-  .panel-body
-    = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, role: "form" }) do |f|
-      .form-group
-        = f.label :email
-        = f.email_field :email, autofocus: true, class: "form-control"
-      = f.submit t('.send_me_reset_password_instructions', :default => "Send me reset password instructions"), class: "btn btn-primary btn-block"
-= render "devise/shared/links"
+= render 'devise/shared/header'
+
+section#sign-in.container.content-section.text-center
+  .row
+    .col-lg-6.col-lg-offset-3
+      h2
+        = t('.forgot_your_password', default: 'Forgot your password?')
+
+      = simple_form_for resource, as: resource_name, url: password_path(resource_name),
+          defaults: { method: :post, input_html: { class: 'input-lg' } } do |f|
+
+        .row
+          .form-group.has-feedback.has-feedback-left
+            label.control-label.sr-only Email
+            = f.input :email, placeholder: 'maria_lima@gmail.com', label: false
+            i.form-control-feedback.fa.fa-at.fa-lg.fa-fw
+
+          .form-group
+            = f.submit t('.send_me_reset_password_instructions', default: 'Send me reset password instructions'), class: 'btn btn-default btn-block pull-left'
+
+  br
+
+  div(style='font-size: 15px')
+    = render 'devise/shared/links'

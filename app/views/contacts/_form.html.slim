@@ -1,17 +1,19 @@
-= form_for @contact do |f|
+= simple_form_for @contact, url: '/contacts#contact', defaults: { label: false, input_html: { class: 'input-lg' } } do |f|
   .row
     .form-group.has-feedback.has-feedback-left
       label.control-label.sr-only Name
-      = f.text_field :name, class: 'form-control input-lg', placeholder: 'Maria Silva Lima'
-      i.green-field.form-control-feedback.fa.fa-user.fa-lg.fa-fw
+      = f.input :name, placeholder: 'Maria Silva Lima'
+      i.form-control-feedback.fa.fa-user.fa-lg.fa-fw
 
     .form-group.has-feedback.has-feedback-left
       label.control-label.sr-only Email
-      = f.text_field :email, class: 'form-control input-lg', placeholder: 'maria_lima@gmail.com'
-      i.green-field.form-control-feedback.fa.fa-envelope.fa-lg.fa-fw
+      = f.input :email, placeholder: 'maria_lima@gmail.com'
+      i.form-control-feedback.fa.fa-envelope-o.fa-lg.fa-fw
 
-    .form-group
-      = f.text_area :message, class: 'form-control', rows: 5
+    .form-group.has-feedback.has-feedback-left
+      label.control-label.sr-only Mensagem
+      = f.input :message, input_html: { rows: 4, style: 'resize: none' }, placeholder: 'Olá! Eu gostaria de saber se...'
+      i.form-control-feedback.fa.fa-align-left.fa-lg.fa-fw
 
     .form-group
       = f.submit 'Enviar Contato', class: 'btn btn-default pull-left'

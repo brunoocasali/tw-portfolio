@@ -1,5 +1,5 @@
 class BaseMailer < ApplicationMailer
-  def about_work(emails)
+  def about_work(emails, project_id)
     mail(to: emails, subject: 'Tatiana Wacelkoski: Sobre Meu Trabalho')
   end
 
@@ -12,8 +12,5 @@ class BaseMailer < ApplicationMailer
   end
 
   # email para:
-  # - falar sobre o trabalho dela. (manual)
-  # - falar sobre o projeto, que está quase pronto. (manual)
-  # - falar sobre o projeto, que está finalizado. (automático)
   # - felicitando de aniversário... (automático, e precisa pegar a data de aniversário)
 end

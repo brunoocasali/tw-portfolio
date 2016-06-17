@@ -12,3 +12,4 @@ pt-BR:
   destroy: 'Excluir'
   not_found: 'Nenhum item foi encontrado!'
   are_you_sure: "Você tem certeza?  Esta ação não poderá ser desfeita!"
+  processing_mails: 'Seus emails estão sendo processandos!'
