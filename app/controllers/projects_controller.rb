@@ -31,6 +31,11 @@ class ProjectsController < ApplicationController
     @project.launched!
     @project.save!
 
+    to_emails = @project.newsletters.map(&:email)
+    to_emails << @project.owner.email
+
+    Delayed::Job.enqueue(MailerJob.new(to_emails, :finished_project, @project.id))
+
     respond_with @project, location: client_projects_path(@client), notice: 'Projeto disponibilizado com sucesso! Estamos preparando um email especial para todos os espectadores!'
   end
 
