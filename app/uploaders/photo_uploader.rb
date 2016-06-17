@@ -1,8 +1,6 @@
 class PhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{Rails.env.underscore}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
@@ -20,6 +18,11 @@ class PhotoUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [350, 150]
   end
 
+  version :large do
+    process quality: 80
+    process resize_to_fit: [1024, 728]
+  end
+
   version :thumb do
     process resize_to_fit: [130, 110]
   end
@@ -31,7 +34,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def watermark
     manipulate! do |img|
       logo = Magick::Image.read("#{Rails.root}/app/assets/images/utils/watermark.png").first
-      img = img.composite(logo, Magick::SouthEastGravity, 15, 0, Magick::OverCompositeOp)
+      img = img.composite(logo, Magick::SouthEastGravity, 15, 5, Magick::OverCompositeOp)
     end
   end
 

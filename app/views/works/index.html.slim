@@ -1,30 +1,16 @@
-section.container.content-section.text-center
-  / aqui será listado todos os trabalhos. usando infinite scroll.
-  h2 Trabalhos
+#works.content-section.text-center(style="padding-top: 150px;")
+  h2.title-up Trabalhos
 
-.gallery_holder
-  ul.gallery_inner.v4
-    li.grayscale
-      a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery01-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
-        img alt=("Fashion Workshop") src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery01-1024x576.jpg" /
-    li.grayscale
-      a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery02-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
-        img alt=("Light Bulbs") height="600" src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery02-1024x576.jpg" width="600" /
-    li.grayscale
-      a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery03-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
-        img alt=("Subway Sign") height="600" src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery03-1024x576.jpg" width="600" /
-    li.grayscale
-      a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery04-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
-        img alt=("Business Office") height="600" src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery04-1024x576.jpg" width="600" /
-    li.grayscale
-      a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery05-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
-        img alt=("Creative Process") height="600" src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery05-1024x576.jpg" width="600" /
-    li.grayscale
-      a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery06-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
-        img alt="Tools" height="600" src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery06-1024x576.jpg" width="600" /
-    li.grayscale
-      a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery07-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
-        img alt=("Business Meeting") height="600" src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery07-1024x576.jpg" width="600" /
-    li.grayscale
-      a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery08-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
-        img alt=("Touch Screen Device") height="600" src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery08-1024x576.jpg" width="600" /
+  .gallery-section
+    .container.reset-this
+      .gallery_holder
+        - @galleries.each do |gallery|
+            ul.gallery_inner.v4
+              == render partial: 'project_galleries/list', locals: { gallery: gallery }
+
+        - if @galleries.empty?
+          p.pink Sem últimas galerias para exibir!
+
+  p.text-center
+    a.btn.btn-default href="/trabalhos"
+      span.network-name veja mais...

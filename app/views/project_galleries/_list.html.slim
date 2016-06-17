@@ -1,0 +1,4 @@
+- gallery.media.select(&:show?).each_with_index do |medium, index|
+    li.grayscale(class="#{'hide' unless index.zero?}" title="Galeria: #{gallery.name if index.zero?}")
+      = link_to medium.filename_url(:watermarked), class: 'prettyphoto', rel: "prettyPhoto[rel-#{gallery.id}]" do
+       = image_tag medium.filename_url, alt: "#{medium.subtitle || "Foto #{index + 1}"} - #{gallery.name}"

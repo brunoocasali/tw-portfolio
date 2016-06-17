@@ -10,11 +10,6 @@ header.intro
           a.btn.btn-circle.page-scroll href="#about"
             i.fa.fa-angle-double-down.animated
 
-
-/! últimos trabalhos
-  - listar 4 últimas galerias.
-  - ao clicar em uma dessa galeria, listar as imagens da galeria.
-
 /! About Section
 section#find-my-project.container.content-section.text-center
   = render 'project_galleries/unlock_form'
@@ -39,24 +34,16 @@ section#works.content-section.text-center
   .gallery-section
     .container.reset-this
       .gallery_holder
-        ul.gallery_inner.v4
-          li.grayscale
-            a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery01-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
-              img alt=("Fashion Workshop") height="600" src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery01-1024x576.jpg" width="600" /
-          li.grayscale
-            a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery02-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
-              img alt=("Light Bulbs") height="600" src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery02-1024x576.jpg" width="600" /
-          li.grayscale
-            a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery03-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
-              img alt=("Subway Sign") height="600" src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery03-1024x576.jpg" width="600" /
-          li.grayscale
-            a.prettyphoto href="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery03-1024x576.jpg" rel="prettyPhoto[rel-291864853]"
-              img alt=("Subway Sign") height="600" src="http://demo.qodeinteractive.com/bridge/wp-content/uploads/2014/03/gallery03-1024x576.jpg" width="600" /
+        - @galleries.each do |gallery|
+            ul.gallery_inner.v4
+              == render partial: 'project_galleries/list', locals: { gallery: gallery }
+
+        - if @galleries.empty?
+          p.pink Sem últimas galerias para exibir!
 
   p.text-center
-    a.btn.btn-default
+    a.btn.btn-default href="/trabalhos"
       span.network-name veja mais...
-
 
 /! Contact Section
 section#contact.container.content-section.text-center
@@ -90,14 +77,12 @@ section#contact.container.content-section.text-center
 
 /! Footer
 footer
-  .container.text-muted
-    .col-sm-7.text-right
-      p(style='font-size: 15px') Copyright © Tatiana Wacelkoski, 2016
-    .col-sm-5.text-right
-      p(style='font-size: 15px')
-        | Developed with&nbsp;
-        i.fa.fa-heart.text-danger &nbsp;
-        | by:
-        a(href="http://brunoocasali.xyz" target="_blank")
-          = image_tag 'bc-logo.png', style: 'width: 48px; margin-left: 12px'
+  .container.text-muted.text-center
+    p(style='font-size: 15px') Copyright © Tatiana Wacelkoski, 2016
+    p(style='font-size: 15px')
+      | Developed with&nbsp;
+      i.fa.fa-heart.text-danger &nbsp;
+      | by:
+      a(href="http://brunoocasali.xyz" target="_blank")
+        = image_tag 'bc-logo.png', style: 'width: 48px; margin-left: 12px'
 

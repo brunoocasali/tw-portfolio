@@ -87,8 +87,15 @@ a:focus {
     background-color: #F7F7F7;
 }
 
-.navbar-custom .navbar-brand {
-    font-weight: 700;
+.navbar-custom a.navbar-brand {
+  padding: 19px 44px;
+  background: image-url("logo.png") no-repeat;
+  background-size: 85px;
+  margin: 12px 10px 1px;
+}
+
+.navbar-custom.top-nav-collapse {
+  border-bottom: 1.4px solid rgba(107, 87, 87, 0.2);;
 }
 
 .navbar-custom .navbar-brand:focus {
@@ -116,11 +123,12 @@ a:focus {
     transition: background .3s ease-in-out;
     font-size: 19px;
     letter-spacing: 1px;
+    color: #f09393;
 }
 
 .navbar-custom .nav li a:hover {
     outline: 0;
-    color: rgba(255,255,255,.8);
+    color: #f09393;
     background-color: transparent;
 }
 
@@ -153,15 +161,25 @@ a:focus {
         transition: background .5s ease-in-out,padding .5s ease-in-out;
     }
 
+    .navbar-custom .nav li a {
+      color: #F7F7F7;
+    }
+
+    .navbar-custom .nav li a:hover {
+      color: #fff;
+    }
+
     .navbar-custom.top-nav-collapse {
         padding: 4px;
         border-bottom: 2px solid rgba(255,255,255,.3);
         background: #f09393;
     }
 
-    a.navbar-brand > img {
-      margin-top: -14px;
-      height: 48px
+    .navbar-custom a.navbar-brand {
+      margin-top: 3px;
+      padding: 22px 55px;
+      background: image-url("logo-white.png") no-repeat;
+      background-size: 107px;
     }
 }
 
