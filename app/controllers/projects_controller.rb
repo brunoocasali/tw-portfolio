@@ -48,8 +48,6 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
-    binding.pry
-
     @project = @client.projects.find(params[:id])
   end
 
