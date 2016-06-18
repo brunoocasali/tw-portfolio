@@ -80,7 +80,7 @@ var template = '<div class="dz-preview dz-image-preview">' +
 Dropzone.options.mediaDropzone = {
   paramName: 'file',
   maxFilesize: 15,
-  autoProcessQueue: false,
+  autoProcessQueue: true,
   dictDefaultMessage: 'Arraste e solte arquivos aqui, para fazer o upload',
   dictRemoveFile: 'Deletar',
   dictCancelUpload: 'Cancelar Upload',

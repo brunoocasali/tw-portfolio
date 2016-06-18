@@ -13,11 +13,11 @@ class MediaController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     @medium = @gallery.media.build
     @medium.filename = params[:file]
-    @medium.subtitle = params[:caption]
-    @medium.show = params[:show]
+    # @medium.subtitle = params[:caption]
+    @medium.show = true # params[:show]
     @medium.save!
 
     render json: @medium
