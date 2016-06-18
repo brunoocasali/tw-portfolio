@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_client
-  before_action :set_project, except: [:index, :new]
+  before_action :set_project, except: [:create, :index, :new]
 
   def index
     @projects = @client.projects.page(params[:page])
@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
     @project = @client.projects.build(project_params)
     @project.save
 
-    respond_with @project, location: client_projects_path(@client)
+    respond_with @project, location: dashboard_client_project_path(@client, @project)
   end
 
   def update
@@ -48,6 +48,8 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
+    binding.pry
+
     @project = @client.projects.find(params[:id])
   end
 
