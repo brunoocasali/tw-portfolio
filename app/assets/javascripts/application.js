@@ -55,34 +55,57 @@ $("#session_address_id").change(function(){
   }
 });
 
+var template = '<div class="dz-preview dz-image-preview">' +
+                '<div class="dz-image"><img data-dz-thumbnail=""></div>' +
+                '<div class="dz-details">' +
+                  '<div class="dz-filename"><span data-dz-name></span></div>' +
+                  '<div class="dz-size" data-dz-size></div>' +
+                '</div>' +
+                '<div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>' +
+                '<div class="dz-success-mark"><span>✔</span></div>' +
+                '<div class="dz-error-mark"><span>✘</span></div>' +
+                '<div class="dz-error-message"><span data-dz-errormessage></span></div>' +
+                '<div class="dz-input">' +
+                  '<input type="text"  disabled="disabled" class="form-control input-sm dropzone-input" placeholder="Legenda" name="caption"/>' +
+                  '<div class="checkbox to-left">' +
+                      '<label><input type="checkbox"  disabled="disabled"/> pública? </label>'+
+                  '</div>' +
+                '</div>' +
+                '<div class="btn-group">' +
+                  '<a href="javascript:undefined;" style="width: 60px" class="btn btn-sm btn-default" disabled="disabled"><i class="fa fa-save"></i></a>' +
+                  '<a href="javascript:undefined;" style="width: 60px" class="btn btn-sm btn-danger" data-dz-remove><i class="fa fa-trash-o"></i></a>' +
+                '</div>' +
+              '</div>'
+
 Dropzone.options.mediaDropzone = {
   paramName: 'file',
   maxFilesize: 15,
+  autoProcessQueue: false,
   dictDefaultMessage: 'Arraste e solte arquivos aqui, para fazer o upload',
-  addRemoveLinks: true,
   dictRemoveFile: 'Deletar',
+  dictCancelUpload: 'Cancelar Upload',
+  previewTemplate: template,
   init: function() {
     var thisDropzone = this;
 
     $.getJSON(($("#mediaDropzone").attr("action")) + '.json', function(data) {
-        $.each(data, function(k, v){
-          var mockFile = {
-            name: v.filename.url.substr(v.filename.url.lastIndexOf('/') + 1),
-            id: v.id, size: v.file_size
-          };
+      $.each(data, function(k, v){
+        var mockFile = {
+          name: v.filename.url.substr(v.filename.url.lastIndexOf('/') + 1),
+          id: v.id, size: v.file_size
+        };
 
-          thisDropzone.emit("addedfile", mockFile);
-          thisDropzone.emit("thumbnail", mockFile, v.filename.url);
-          thisDropzone.emit("complete", mockFile);
-      });
+        thisDropzone.emit("addedfile", mockFile);
+        thisDropzone.emit("thumbnail", mockFile, v.filename.medium.url);
+        thisDropzone.emit("complete", mockFile);
     });
+  });
 
-    this.on('removedfile', function(file) {
-      console.log(file)
-      $.ajax({
-        url: $("#mediaDropzone").attr("action") + "/" + file.id,
-        type: 'DELETE'
-      });
+  this.on('removedfile', function(file) {
+    $.ajax({
+      url: $("#mediaDropzone").attr("action") + "/" + file.id,
+      type: 'DELETE'
     });
-  }
-};
+  });
+}
+}

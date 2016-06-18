@@ -2,6 +2,8 @@ h2
   = t('edit', m: tm(Gallery))
   = link_to t('back'), client_project_galleries_path(@client, @project), class: 'btn btn-default btn-sm pull-right'
 
+p.text-muted * Para submeter uma alteração nas imagens clique em salvar.
+
 - unless params[:next].present?
   = simple_form_for([@client, @project, @gallery], url: client_project_gallery_path, html: { multipart: true }) do |f|
 

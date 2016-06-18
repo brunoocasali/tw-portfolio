@@ -30,3 +30,17 @@ h2{
 .fc-event{
     cursor: pointer;
 }
+
+.dropzone .dz-preview .dz-image {
+  border-radius: 5px;
+}
+
+.dropzone-input{
+  width: 120px;
+  border-radius: 5px;
+  margin-top: 2px;
+}
+
+.to-left{
+  padding-left: 0;
+}
