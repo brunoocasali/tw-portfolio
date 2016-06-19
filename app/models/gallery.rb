@@ -8,8 +8,6 @@ class Gallery < ActiveRecord::Base
   has_enumeration_for :kind, with: GalleryKind, required: true
 
   def cover
-    if media.size > 0
-      media.where(cover: true).first || media.public_media.first || media.first
-    end
+    media.where(cover: true).first
   end
 end
