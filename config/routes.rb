@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :contacts, only: [:create, :show, :index, :delete]
 
   resources :galleries, only: :none do
-    resources :media, only: [:index, :create, :destroy]
+    resources :media, only: [:index, :create, :destroy, :update]
   end
 
   resources :utils, only: :none do

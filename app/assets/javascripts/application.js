@@ -63,17 +63,16 @@ var template = '<div class="dz-preview dz-image-preview">' +
                 '</div>' +
                 '<div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>' +
                 '<div class="dz-success-mark"><span>✔</span></div>' +
-                '<div class="dz-error-mark"><span>✘</span></div>' +
-                '<div class="dz-error-message"><span data-dz-errormessage></span></div>' +
                 '<div class="dz-input">' +
-                  '<input type="text"  disabled="disabled" class="form-control input-sm dropzone-input" placeholder="Legenda" name="caption"/>' +
+                  '<input type="text" style="cursor: auto !important;" class="form-control input-sm dropzone-input js-caption" placeholder="Legenda" name="caption"/>' +
                   '<div class="checkbox to-left">' +
-                      '<label><input type="checkbox"  disabled="disabled"/> pública? </label>'+
+                      '<label title="Disponível apenas para quem possuír o código"><input type="checkbox" class="js-show"/> <i class="fa fa-unlock"></i></label>'+
+                      '<label class="pull-right" title="Tornar a capa da galeria"><input type="checkbox" class="js-cover"/> <i class="fa fa-star" style="color: #E38C2D"></i></label>'+
                   '</div>' +
                 '</div>' +
                 '<div class="btn-group">' +
-                  '<a href="javascript:undefined;" style="width: 60px" class="btn btn-sm btn-default" disabled="disabled"><i class="fa fa-save"></i></a>' +
-                  '<a href="javascript:undefined;" style="width: 60px" class="btn btn-sm btn-danger" data-dz-remove><i class="fa fa-trash-o"></i></a>' +
+                  '<a href="javascript:undefined;" style="width: 60px" class="bt btn btn-sm btn-default save-btn"><i class="fa fa-save"></i></a>' +
+                  '<a href="javascript:undefined;" style="width: 60px" class="bt btn btn-sm btn-danger" data-dz-remove><i class="fa fa-trash-o"></i></a>' +
                 '</div>' +
               '</div>'
 
@@ -82,8 +81,6 @@ Dropzone.options.mediaDropzone = {
   maxFilesize: 15,
   autoProcessQueue: true,
   dictDefaultMessage: 'Arraste e solte arquivos aqui, para fazer o upload',
-  dictRemoveFile: 'Deletar',
-  dictCancelUpload: 'Cancelar Upload',
   previewTemplate: template,
   init: function() {
     var thisDropzone = this;
@@ -98,14 +95,45 @@ Dropzone.options.mediaDropzone = {
         thisDropzone.emit("addedfile", mockFile);
         thisDropzone.emit("thumbnail", mockFile, v.filename.medium.url);
         thisDropzone.emit("complete", mockFile);
+        thisDropzone.emit("success", mockFile, v);
+      });
     });
+
+    this.on('removedfile', function(file) {
+      $.ajax({
+        url: $("#mediaDropzone").attr("action") + "/" + file.id,
+        type: 'DELETE'
+      });
+    });
+
+    this.on('success', function(file, response) {
+      var id = response.id;
+      // get element
+      var elem = $('a.save-btn:not([onclick])').first()
+      elem.attr('onclick', 'update(' + id + ')');
+      // get parent and add id to it.
+      preview_elem = elem.parent().parent();
+      preview_elem.find('.js-caption').attr('id', 'caption-' + id);
+      preview_elem.find('.js-cover').attr('id', 'cover-' + id);
+      preview_elem.find('.js-show').attr('id', 'show-' + id);
+
+      $('#caption-' + id).val(response.subtitle);
+      $('#show-' + id).attr('checked', response.show);
+      $('#cover-' + id).attr('checked', response.cover);
+    });
+  }
+}
+
+function update(id){
+  $.ajax({
+    url: $("#mediaDropzone").attr("action") + "/" + id,
+    type: 'PUT',
+    data: {
+      caption: $('#caption-' + id).val(),
+      show: $('#show-' + id).is(':checked'),
+      cover: $('#cover-' + id).is(':checked')
+    }
   });
 
-  this.on('removedfile', function(file) {
-    $.ajax({
-      url: $("#mediaDropzone").attr("action") + "/" + file.id,
-      type: 'DELETE'
-    });
-  });
-}
+  location.reload();
 }

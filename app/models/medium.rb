@@ -10,6 +10,8 @@ class Medium < ActiveRecord::Base
   delegate :project, to: :gallery
   delegate :owner, to: :project
 
+  scope :public_media, -> { where(show: true) }
+
   private
 
   def update_asset_attributes

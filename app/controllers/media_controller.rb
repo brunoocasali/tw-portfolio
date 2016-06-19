@@ -13,12 +13,23 @@ class MediaController < ApplicationController
   end
 
   def create
-    # binding.pry
     @medium = @gallery.media.build
     @medium.filename = params[:file]
-    # @medium.subtitle = params[:caption]
-    @medium.show = true # params[:show]
+    @medium.subtitle = params[:caption]
+    @medium.show = params[:show]
     @medium.save!
+
+    render json: @medium
+  end
+
+  def update
+    if params[:cover]
+      @gallery.media.update_all(cover: false)
+      @gallery.save!
+    end
+
+    @medium = @gallery.media.find(params[:id])
+    @medium.update(subtitle: params[:caption], show: (params[:cover] ? true : params[:show]), cover: params[:cover])
 
     render json: @medium
   end
