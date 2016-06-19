@@ -38,7 +38,7 @@ table.table.table-hover
         td.text-center(width='5%')
           = link_to t('show_btn'), client_path(client)
         td.text-center(width='5%')
-          = link_to t('destroy'), registration_path('user'), data: { confirm: t('are_you_sure') }, method: :delete
+          = link_to t('destroy'), client_path(client), data: { confirm: t('are_you_sure') }, method: :delete
 
 
 = paginate @clients
