@@ -8,12 +8,12 @@ class ZipCodeInput < SimpleForm::Inputs::Base
   private
 
   def input_html_options
-    convert_html_options(
-      super_options: super,
-      options: {
-        data: { mask: I18n.t('simple_form.mask.zipcode.format') },
-        class: 'validate mask-zipcode'
-      }
-    )
+    convert_html_options super_options: super,
+                         options: {
+                            data: {
+                              mask: I18n.t('simple_form.mask.zipcode.format')
+                            },
+                            class: 'validate mask-zipcode'
+                         }
   end
 end

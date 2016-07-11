@@ -26,7 +26,7 @@
 //= require dropzone
 //= require angular_module
 //= require calendars
-//= require core
+//= require_tree ./core
 //= require_self
 
 $('.image-picker').imagepicker({
@@ -35,9 +35,6 @@ $('.image-picker').imagepicker({
 });
 
 $(document).ready(function() {
-  var input = $('.mask');
-  input.mask(input.data('maskFormat'), {reverse: input.data('maskReverse'), placeholder: input.data('maskPlaceholder'), mask_maxlength: input.data('maskMaxlength')});
-
   $('.fc-toolbar').find('.fc-button-group').addClass('btn-group');
   $('.fc-toolbar').find('.fc-button').addClass('btn btn-danger').removeClass('fc-prev-button fc-button fc-state-default fc-corner-left fc-next-button fc-corner-right');
   $('.fc-toolbar').find('.fc-prev-button').html($('<span />').attr('class', 'glyphicon glyphicon-chevron-left'));

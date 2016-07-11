@@ -2,8 +2,8 @@ class Project < ActiveRecord::Base
   belongs_to :owner, class_name: 'User', foreign_key: :owner_id
 
   has_many :newsletters, dependent: :delete_all
-  has_many :sessions, dependent: :destroy
-  has_many :galleries, dependent: :destroy
+  has_many :sessions, dependent: :delete_all
+  has_many :galleries, dependent: :delete_all
   has_many :media, through: :galleries
   has_many :print_requests, through: :media
 
