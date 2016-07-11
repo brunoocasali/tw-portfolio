@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.easing
 //= require bootstrap
+//= require grayscale
 //= require angular
 //= require moment
 //= require fullcalendar
