@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   belongs_to :address
   accepts_nested_attributes_for :address
 
+  validates :email, presence: true
+  validates :name, presence: true
+
   before_validation :generate_password
 
   def generate_password

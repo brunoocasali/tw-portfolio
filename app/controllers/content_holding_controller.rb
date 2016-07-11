@@ -2,7 +2,6 @@ class ContentHoldingController < ApplicationController
   skip_before_action :authenticate_user!
 
   def check
-    binding.pry
     begin
       Rails.application.routes.recognize_path(request.path)
 

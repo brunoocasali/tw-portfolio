@@ -1,13 +1,14 @@
 pt-BR:
   simple_form:
-    "yes": 'Sim'
-    "no": 'Não'
+    'yes': Sim
+    'no': Não
+
     required:
-      text: 'requerido'
+      text: Este campo é obrigatório
       mark: '*'
 
     error_notification:
-      default_message: "Por favor revise os seguintes problemas abaixo:"
+      default_message: '<strong>Os seguintes erros foram encontrados</strong>. Por favor, verifique:'
 
     mask:
       date:
@@ -19,15 +20,17 @@ pt-BR:
         placeholder: '__:__:__'
 
       datetime:
-        format: '00/00/0000 00:00'
-        placeholder: '__/__/____ __:__'
+        format: '00/00/0000 00:00:00'
+        placeholder: '__/__/____ __:__:__'
 
       cellphone:
         format: '(00) #0000-0000'
         placeholder: '(__) _____-____'
 
       phone:
-        format: '(00) 0000-0000'
+        custom_length: 11
+        format_default: '(00) 0000-00009'
+        format_custom: '(00) 00000-0000'
         placeholder: '(__) ____-____'
 
       zipcode:
@@ -36,6 +39,3 @@ pt-BR:
 
       currency:
         format: '000.000.000.000.000,00'
-
-      percent:
-        format: '##0,00%'
