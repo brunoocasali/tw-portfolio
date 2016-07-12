@@ -1,4 +1,4 @@
-= simple_form_for(@project, url: client_projects_url(@client)) do |f|
+= simple_form_for([@client, @project]) do |f|
   = f.error_notification
 
   .form-inputs

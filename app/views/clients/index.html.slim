@@ -1,6 +1,6 @@
 h2
-  = t 'list', m: t('.title')
-  = link_to t('new', m: t('.title_singular')), new_client_url, class: 'btn btn-primary btn-sm pull-right'
+  = t 'list', m: tmp(Client)
+  = link_to t('new', m: tm(Client)), new_client_url, class: 'btn btn-primary btn-sm pull-right'
 
 = paginate @clients
 = empty_list_message @clients
@@ -8,11 +8,10 @@ h2
 table.table.table-hover
   thead
     tr
-      th = ta(User, :name)
-      th = ta(User, :email)
-      th = ta(User, :phone)
+      th = ta(Client, :name)
+      th = ta(Client, :email)
+      th = ta(Client, :phone)
       th(colspan="3")
-
   tbody
     - @clients.each do |client|
       tr
