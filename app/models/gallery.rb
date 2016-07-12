@@ -1,7 +1,7 @@
 class Gallery < ActiveRecord::Base
   belongs_to :project
 
-  has_many :media, dependent: :delete_all
+  has_many :media, dependent: :destroy
 
   validates :name, presence: true
 
