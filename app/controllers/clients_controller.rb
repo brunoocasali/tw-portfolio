@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy, :dashboard]
 
   def index
-    @clients = User.client.page(params[:page])
+    @clients = Client.client.page(params[:page])
   end
 
   def show; end
@@ -16,7 +16,7 @@ class ClientsController < ApplicationController
   end
 
   def new
-    @client = User.new
+    @client = Client.new
     @client.build_address
     @client.client!
   end
@@ -24,7 +24,7 @@ class ClientsController < ApplicationController
   def edit; end
 
   def create
-    @client = User.new(client_params)
+    @client = Client.new(client_params)
     @client.client!
     @client.save
 
@@ -46,11 +46,11 @@ class ClientsController < ApplicationController
   private
 
   def set_client
-    @client = User.client.find(params[:id])
+    @client = Client.find(params[:id])
   end
 
   def client_params
-    params.require(:user)
+    params.require(:client)
       .permit(:name, :phone, :email,
               address_attributes: [:nick, :reference, :city, :state, :zipcode, :street])
   end

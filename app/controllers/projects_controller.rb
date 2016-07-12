@@ -16,9 +16,12 @@ class ProjectsController < ApplicationController
 
   def create
     @project = @client.projects.build(project_params)
-    @project.save
 
-    respond_with @project, location: dashboard_client_project_path(@client, @project)
+    if @project.save
+      respond_with @project, location: dashboard_client_project_path(@client, @project)
+    else
+      respond_with @project, location: [@client, @project]
+    end
   end
 
   def update
@@ -52,7 +55,7 @@ class ProjectsController < ApplicationController
   end
 
   def set_client
-    @client = User.client.find(params[:client_id])
+    @client = Client.find(params[:client_id])
   end
 
   def project_params

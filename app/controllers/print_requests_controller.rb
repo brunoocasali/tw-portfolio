@@ -28,7 +28,7 @@ class PrintRequestsController < ApplicationController
   private
 
   def set_client
-    @client = User.client.find(params[:client_id])
+    @client = Client.find(params[:client_id])
   end
 
   def set_project
