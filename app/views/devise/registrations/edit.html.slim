@@ -1,36 +1,29 @@
 = bootstrap_devise_error_messages!
-.panel.panel-default.devise-bs
-  .panel-heading
-    h4
-      = t('.title', :resource => resource_class.model_name.human , :default => "Edit #{resource_name.to_s.humanize}")
-  .panel-body
-    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-      .form-group
-        = f.label :email
-        = f.email_field :email, autofocus: true, class: "form-control"
-      .form-group
-        = f.label :password
-        i
-          | (
-          = t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it")
-          | )
-        br
-        = f.password_field :password, :autocomplete => "off", class: "form-control"
-      .form-group
-        = f.label :password_confirmation
-        br
-        = f.password_field :password_confirmation, class: "form-control"
-      .form-group
-        = f.label :current_password
-        i
-          | (
-          = t('.we_need_your_current_password_to_confirm_your_changes', :default => 'we need your current password to confirm your changes')
-          | )
-        = f.password_field :current_password, class: "form-control"
-      = f.submit t('.update', :default => "Update"), class: "btn btn-primary"
+h2
+  = t('.title', resource: resource_class.model_name.human , default: "Edit #{resource_name.to_s.humanize}")
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+
+  = f.input :email, as: :email, autofocus: true
+
+  = f.label :password
+  i
+    | &nbsp;
+    = t('.leave_blank_if_you_don_t_want_to_change_it')
+  = f.input :password, autocomplete: 'off', label: false
+  = f.input :password_confirmation
+
+  = f.label :current_password
+  i
+    | &nbsp;
+    = t('.we_need_your_current_password_to_confirm_your_changes')
+  = f.input :current_password, label: false
+
+  = f.submit t('.update'), class: 'btn btn-sm btn-primary'
+br
+
 p
-  = t('.unhappy', :default => 'Unhappy')
-  | ? 
-  = link_to t('.cancel_my_account', :default => "Cancel my account"), registration_path(resource_name), :data => { :confirm => t('.are_you_sure', :default => "Are you sure?") }, :method => :delete
+  = t('.unhappy', default: 'Unhappy')
+  | ?&nbsp;
+  = link_to t('.cancel_my_account', default: 'Cancel my account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete
   | .
-= link_to t('back', :default => 'Back'), :back
+  = link_to t('back'), :back, class: 'btn btn-default btn-sm pull-right'

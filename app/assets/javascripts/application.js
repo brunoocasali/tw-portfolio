@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.easing
 //= require bootstrap
 //= require grayscale
 //= require angular
@@ -26,6 +25,7 @@
 //= require dropzone
 //= require angular_module
 //= require calendars
+//= require jquery.easing
 //= require_tree ./core
 //= require_self
 
