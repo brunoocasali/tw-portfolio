@@ -52,7 +52,7 @@ Rails.application.routes.draw do
       end
 
       resources :galleries, except: :show
-      resources :print_requests
+      # resources :print_requests
     end
   end
 
