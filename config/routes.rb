@@ -43,11 +43,12 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :sessions, only: [:destroy, :create, :index] do
+      resources :sessions, only: [:create, :index] do
         member do
           get :wait
           get :cancel
           get :finish
+          get :remove
         end
       end
 

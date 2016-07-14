@@ -1,64 +1,80 @@
-h2
-  = t('list', m: tmp(Session))
-  = link_to t('back'), dashboard_client_project_path(@client, @project), class: 'btn btn-sm btn-default pull-right'
+.row
+  .col-sm-12
+    h2
+      = t('list', m: tmp(Session))
+      = link_to t('back'), dashboard_client_project_path(@client, @project), class: 'btn btn-sm btn-default pull-right'
 
-#fullCalModal.modal.fade
-  .modal-dialog
-    .modal-content
-      .modal-header
-        button.close data-dismiss="modal" type="button"
-          span aria-hidden="true" &times;
-          span.sr-only close
-        h4#modalTitle.modal-title
-      #modalBody.modal-body
-      .modal-footer
-        = link_to 'cancelar', '#', class: 'btn btn-sm btn-danger', id: 'cancel_btn'
-        = link_to 'aguardar', '#', class: 'btn btn-sm btn-warning', id: 'wait_btn'
-        = link_to 'finalizar', '#', class: 'btn btn-sm btn-success', id: 'finish_btn'
+  .col-sm-12.col-md-6.col-lg-4
+    .well.well-sm
+      small.text-muted Legenda:
+      br
 
-#fullCalCreateModal.modal.fade
-  .modal-dialog
-    .modal-content
-      .modal-header
-        | Novo Ensaio
-        button.close data-dismiss="modal" type="button"
-          span aria-hidden="true" &times;
-          span.sr-only close
-        h4#modalTitle.modal-title
-      #modalBody.modal-body
-        = simple_form_for(@session, url: client_project_sessions_path(@client, @project), method: :post) do |f|
-          = f.error_notification
+      i.fa.fa-square aria-hidden="true" style=("color: #008000;")  Finalizado
+      i.fa.fa-square aria-hidden="true" style=("color: #ffa500; margin-left: 10px;")  Aguardando
+      i.fa.fa-square aria-hidden="true" style=("color: #ff0000; margin-left: 10px;")  Cancelado
 
-          .row
-            .col-sm-6
-              = f.input :start_at, as: :date_time_picker
-            .col-sm-6
-              = f.input :finish_at, as: :date_time_picker
-            .col-sm-12
-              = f.association :address, collection: [Address.all, Address.new(id: 0, nick: 'Ou crie um novo!')].flatten, include_blank: 'Selecione um local', label_method: :nick
+  #fullCalModal.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close data-dismiss="modal" type="button"
+            span aria-hidden="true" &times;
+            span.sr-only close
+          h4#modalTitle.modal-title
+        #modalBody.modal-body
+        .modal-footer
+          = link_to 'excluir', '#', class: 'btn btn-sm btn-default pull-left', id: 'destroy_btn'
 
-          #address_form.hide
-            fieldset
-              legend Endereço
+          = link_to 'cancelar', '#', class: 'btn btn-sm btn-danger', id: 'cancel_btn'
+          = link_to 'aguardar', '#', class: 'btn btn-sm btn-warning', id: 'wait_btn'
+          = link_to 'finalizar', '#', class: 'btn btn-sm btn-success', id: 'finish_btn'
 
-              = f.simple_fields_for :address, @session.address do |fa|
-                .row
-                  .col-sm-12.hide#alert_cep
-                    .alert.alert-dismissible.alert-danger
-                      | Ops! o CEP informado é inválido... Não encontramos nada sobre ele!
-                  .col-sm-3
-                    = fa.input :zipcode, as: :zip_code, input_html: { id: 'zipcode', onblur: 'loadCEP()' }
-                  .col-sm-9
-                    = fa.input :street
-                  .col-sm-6
-                    = fa.input :city
-                  .col-sm-2
-                    = fa.input :state
-                  .col-sm-6
-                    = fa.input :reference, input_html: { placeholder: 'Ao lado do prédio azul - n° 54' }
-                  .col-sm-6
-                    = fa.input :nick, input_html: { placeholder: 'Minha Casa' }
+  #fullCalCreateModal.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close data-dismiss="modal" type="button"
+            span aria-hidden="true" &times;
+            span.sr-only close
+          h3#modalTitle.modal-title Novo Ensaio
+        #modalBody.modal-body
+          = simple_form_for(@session, url: client_project_sessions_path(@client, @project), method: :post) do |f|
+            = f.error_notification id: 'error_message'
 
-          = f.button :submit, class: 'btn btn-sm'
+            .row
+              .col-sm-6
+                = f.input :start_at, as: :date_time_picker
+              .col-sm-6
+                = f.input :finish_at, as: :date_time_picker
+              .col-sm-12
+                = f.association :address, collection: [Address.all, Address.new(id: 0, nick: '-- Ou crie um novo! --')].flatten, include_blank: 'Selecione um local', label_method: :nick, selected: (0 if @session.errors.any?)
 
-#calendar
+            #address_form.hide
+              fieldset
+                legend Endereço
+
+                = f.simple_fields_for :address, @session.address do |fa|
+                  .row
+                    .col-sm-12.hide#alert_cep
+                      .alert.alert-dismissible.alert-danger
+                        | Ops! o CEP informado é inválido... Não encontramos nada sobre ele!
+                  .row
+                    .col-sm-4
+                      = fa.input :zipcode, as: :zip_code, input_html: { id: 'zipcode', onblur: 'loadCEP()' }
+                    .col-sm-8
+                      = fa.input :street
+                  .row
+                    .col-sm-7
+                      = fa.input :city
+                    .col-sm-5
+                      = fa.input :state
+                  .row
+                    .col-sm-6
+                      = fa.input :reference, input_html: { placeholder: 'Ao lado do prédio azul - n° 54' }
+                    .col-sm-6
+                      = fa.input :nick, input_html: { placeholder: 'Minha Casa' }
+
+            = f.button :submit, class: 'btn btn-sm'
+
+  .col-sm-12
+    #calendar

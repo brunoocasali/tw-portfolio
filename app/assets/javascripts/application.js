@@ -42,8 +42,16 @@ $(document).ready(function() {
 });
 
 //sessions
+$(document).ready(function() {
+  changed_address();
+});
+
 $("#session_address_id").change(function(){
-  var id = $(this).find("option:selected").attr('value');
+  changed_address();
+});
+
+function changed_address(){
+  var id = $("#session_address_id").find("option:selected").attr('value');
 
   if (id == 0){
     $('#address_form').removeClass('hide');
@@ -52,7 +60,7 @@ $("#session_address_id").change(function(){
   if (id == '' || id != 0) {
     $('#address_form').addClass('hide');
   }
-});
+}
 
 var template = '<div class="dz-preview dz-image-preview">' +
                 '<div class="dz-image"><img data-dz-thumbnail=""></div>' +

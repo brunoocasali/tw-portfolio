@@ -1,10 +1,11 @@
 class SessionsController < ApplicationController
   before_action :set_client
   before_action :set_project
-  before_action :set_session, only: [:wait, :finish, :cancel, :destroy]
+  before_action :set_session, only: [:wait, :finish, :cancel, :remove]
 
   def index
-    set_new_session
+    @session = @project.sessions.build(status: SessionStatus::WAITING)
+    @session.build_address
 
     respond_with(@session, location: client_project_sessions_path(@client, @project))
   end
@@ -13,21 +14,21 @@ class SessionsController < ApplicationController
     @session.canceled!
     @session.save
 
-    redirect_to client_project_sessions_path(@client, @project)
+    redirect_to client_project_sessions_path(@client, @project), notice: 'Ensaio Cancelado!'
   end
 
   def finish
     @session.finished!
     @session.save
 
-    redirect_to client_project_sessions_path(@client, @project)
+    redirect_to client_project_sessions_path(@client, @project), notice: 'Ensaio Finalizado!'
   end
 
   def wait
     @session.waiting!
     @session.save
 
-    redirect_to client_project_sessions_path(@client, @project)
+    redirect_to client_project_sessions_path(@client, @project), notice: 'Ensaio em Espera!'
   end
 
   def create
@@ -35,26 +36,19 @@ class SessionsController < ApplicationController
     @session.waiting!
 
     if @session.save
-      redirect_to client_project_sessions_path(@client, @project)
+      respond_with @session, location: client_project_sessions_path(@client, @project)
     else
-      @session.build_address
-
       render :index
     end
   end
 
-  def destroy
+  def remove
     @session.destroy
 
-    respond_with(@session, location: client_project_sessions_path(@client, @project))
+    redirect_to client_project_sessions_path(@client, @project), notice: 'Ensaio excluído com sucesso!'
   end
 
   private
-
-  def set_new_session
-    @session = @project.sessions.build(status: SessionStatus::WAITING)
-    @session.build_address
-  end
 
   def set_client
     @client = Client.find(params[:client_id])
@@ -71,7 +65,7 @@ class SessionsController < ApplicationController
   def session_params
     attributes = {
       address_attributes: [:nick, :reference, :city, :state, :zipcode, :street]
-    } unless params[:session] && params[:session][:address_id] != 0
+    } if params[:session] && params[:session][:address_id] == '0'
 
     params.require(:session).permit(:start_at, :finish_at, :address_id, :status, attributes)
   end

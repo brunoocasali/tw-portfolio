@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
-  respond_to :html, :json, :js
+  respond_to :html, :json
 
   protected
 

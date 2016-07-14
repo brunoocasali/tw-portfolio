@@ -12,6 +12,7 @@ $('#calendar').fullCalendar({
     $('#modalTitle').html(event.title);
     $('#modalBody').html(event.description);
 
+    $('#destroy_btn').attr('href', 'sessions/' + event.id + '/remove');
     $('#cancel_btn').attr('href', 'sessions/' + event.id + '/cancel');
     $('#wait_btn').attr('href', 'sessions/' + event.id + '/wait');
     $('#finish_btn').attr('href', 'sessions/' + event.id + '/finish');
@@ -24,3 +25,8 @@ $('#calendar').fullCalendar({
     $('#fullCalCreateModal').modal();
   }
 });
+
+$(document).on('ready', function() {
+  if ($('#error_message').length > 0)
+    $('#fullCalCreateModal').modal();
+})
