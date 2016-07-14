@@ -4,10 +4,9 @@ class SessionsController < ApplicationController
   before_action :set_session, only: [:wait, :finish, :cancel, :destroy]
 
   def index
-    @sessions = @project.sessions.all
     set_new_session
 
-    respond_with(@sessions, location: client_project_sessions_path(@client, @project))
+    respond_with(@session, location: client_project_sessions_path(@client, @project))
   end
 
   def cancel

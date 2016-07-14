@@ -61,3 +61,8 @@
           span aria-hidden="true" &times;
           span.sr-only close
         h4#modalTitle.modal-title
+      #modalBody.modal-body
+      .modal-footer
+        = link_to 'cancelar', '#', class: 'btn btn-sm btn-danger', id: 'cancel_btn'
+        = link_to 'aguardar', '#', class: 'btn btn-sm btn-warning', id: 'wait_btn'
+        = link_to 'finalizar', '#', class: 'btn btn-sm btn-success', id: 'finish_btn'
