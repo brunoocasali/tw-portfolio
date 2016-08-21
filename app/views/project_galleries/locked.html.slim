@@ -1,6 +1,6 @@
-.container.content-section.text-center
+.container.content-section.text-center(style="padding-top: 150px")
   .row
-    h2 OPS! Infelizmente o projeto ainda não está disponível
+    h2 Infelizmente o projeto ainda não está pronto :(
 
     .col-sm-12(style="margin-top: 14px")
       p(style="font-size: 16px") Mas deixe seu nome e email, que lhe aviso assim que sair do forno!
@@ -10,13 +10,13 @@
       .col-lg-6.col-lg-offset-3
         .form-group.has-feedback.has-feedback-left
           label.control-label.sr-only Nome
-          = f.input :name, placeholder: 'Marcelo Mathias', label: false
+          = f.input :name, placeholder: 'Seu Nome', label: false
           i.form-control-feedback.fa.fa-user.fa-lg.fa-fw
 
       .col-lg-6.col-lg-offset-3
         .form-group.has-feedback.has-feedback-left
           label.control-label.sr-only Email
-          = f.input :email, placeholder: 'marcelo_mathiass@hotmail.com', label: false
+          = f.input :email, placeholder: 'seu_melhor@email.com', label: false
           i.form-control-feedback.fa.fa-at.fa-lg.fa-fw
 
       .col-lg-6.col-lg-offset-3

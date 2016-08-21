@@ -215,6 +215,13 @@ a:focus {
     color: #f09393;
 }
 
+.navbar-custom-inverse a.navbar-brand-inverse {
+  padding: 11px 44px;
+  background: image-url("logo.png") no-repeat;
+  background-size: 85px;
+  margin: 12px 10px 1px;
+}
+
 .navbar-custom-inverse .nav li a {
     -webkit-transition: background .3s ease-in-out;
     -moz-transition: background .3s ease-in-out;
@@ -250,12 +257,20 @@ a:focus {
 @media(min-width:768px) {
     .navbar-custom-inverse {
         padding: 20px 0;
+        margin-top: 15px;
         border-bottom: 0;
         letter-spacing: 1px;
         background: 0 0;
         -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
         -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
         transition: background .5s ease-in-out,padding .5s ease-in-out;
+    }
+
+    .navbar-custom-inverse a.navbar-brand-inverse {
+      padding: 24px 62px;
+      background: image-url("logo.png") no-repeat;
+      background-size: 115px;
+      margin: 19px 0px;
     }
 
     .navbar-custom-inverse.top-nav-collapse {
