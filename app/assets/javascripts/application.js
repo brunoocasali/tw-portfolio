@@ -21,6 +21,7 @@
 //= require fittext
 //= require image-picker
 //= require wow
+//= require flickity
 //= require jQuery-Mask-Plugin
 //= require dropzone
 //= require angular_module
@@ -144,3 +145,23 @@ function update(id){
 
   location.reload();
 }
+
+
+$(function() {
+  function nextBackground() {
+    $("#intro-header").fadeIn("slow", function() {
+      items = [1, 2];
+      var item = items[Math.floor(Math.random() * items.length)];
+
+      $("#intro-header").removeClass (function (index, css) {
+          return (css.match(/intro[0-9]+/).join(' '));
+      });
+
+      $(this).addClass("intro" + item);
+    });
+
+    setTimeout(nextBackground, 8000);
+  }
+
+  setTimeout(nextBackground, 8000);
+});

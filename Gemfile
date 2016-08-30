@@ -67,4 +67,5 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular'
   gem 'rails-assets-fullpage', '2.6.1'
   gem 'rails-assets-isotope', '2.0.0'
+  gem 'rails-assets-flickity'
 end
