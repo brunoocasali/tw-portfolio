@@ -10,7 +10,7 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 
 # $assets = Dir[Rails.root.join('app/controllers/**/*_controller.rb')].map { |path| path.match(/(\w+)_controller.rb/); $1 }.compact
-$assets = ['admin', 'clients', 'grayscale', 'devise',  'gallery']
+$assets = ['admin', 'clients', 'grayscale', 'devise',  'gallery', 'home_page']
 
 $assets.freeze
 

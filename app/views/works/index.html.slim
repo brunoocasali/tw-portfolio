@@ -1,15 +1,15 @@
-#works.content-section.text-center(style="padding-top: 150px;")
+#works.content-section.text-center(style="padding-top: 0px;")
   h2.title-up Trabalhos
 
   - unless @galleries.empty?
-    == render 'shared/links'
+    == render 'shared/links', be_link: false
 
   .gallery-section
     .container.reset-this
-      .gallery_holder
+      .gallery_holder.grid
         - @galleries.each do |gallery|
             ul.gallery_inner.v4
               == render partial: 'project_galleries/list', locals: { gallery: gallery }
 
-        - if @galleries.empty?
+        .empty-msg.hide
           p.pink Sem últimas galerias para exibir!

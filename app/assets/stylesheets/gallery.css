@@ -12,3 +12,8 @@
  *
  *= require default
  */
+
+.is-checked {
+  font-weight: bold;
+  font-size: 15px;
+}

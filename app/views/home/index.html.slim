@@ -6,7 +6,6 @@ header.demo.intro1#intro-header
 
           a.text-center.page-scroll href="#about" style="font-size: 12px"
             span
-            | aqui tem mais!
 
 /! About Section
 section#find-my-project.container.content-section.text-center
@@ -29,7 +28,7 @@ section#about.content-section.text-center
 section#works.content-section.text-center
   h2.title-up Últimos Trabalhos
 
-  == render 'shared/links'
+  == render 'shared/links', be_link: true
 
   .gallery-section
     .container.reset-this

@@ -1,1 +1,7 @@
-= GalleryKind.to_a.map { |item| link_to item.first, works_path(tipo: GalleryKind.key_for(item.last)) }.join(raw('&nbsp;/&nbsp;')).html_safe
+- values = GalleryKind.to_a << ['Todos', '*']
+
+.links
+  - if be_link
+    = values.reverse.map { |item| link_to item.first, works_path(anchor: GalleryKind.key_for(item.last) || item.last) }.join(raw(' / ')).html_safe
+  - else
+    = values.reverse.map { |item| link_to item.first, works_path(anchor: GalleryKind.key_for(item.last) || item.last), data: { filter: ".#{GalleryKind.key_for(item.last)}" || item.last } }.join(raw(' / ')).html_safe

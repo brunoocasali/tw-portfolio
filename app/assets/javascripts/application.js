@@ -27,6 +27,7 @@
 //= require angular_module
 //= require calendars
 //= require jquery.easing
+//= require isotope.pkgd.min
 //= require_tree ./core
 //= require_self
 
