@@ -23,13 +23,16 @@ class MediaController < ApplicationController
   end
 
   def update
-    if params[:cover]
+    cover = ActiveRecord::Type::Boolean.new.type_cast_from_user(params[:cover])
+    show = ActiveRecord::Type::Boolean.new.type_cast_from_user(params[:show])
+
+    if cover
       @gallery.media.update_all(cover: false)
       @gallery.save!
     end
 
     @medium = @gallery.media.find(params[:id])
-    @medium.update(subtitle: params[:caption], show: (params[:cover] ? true : params[:show]), cover: params[:cover])
+    @medium.update(subtitle: params[:caption], show: (cover ? true : show), cover: params[:cover])
 
     render json: @medium
   end
