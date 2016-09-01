@@ -87,7 +87,8 @@ var template = '<div class="dz-preview dz-image-preview">' +
 
 Dropzone.options.mediaDropzone = {
   paramName: 'file',
-  maxFilesize: 15,
+  maxFilesize: 6,
+  maxFiles: 6,
   autoProcessQueue: true,
   dictDefaultMessage: 'Arraste e solte arquivos aqui, para fazer o upload',
   previewTemplate: template,
