@@ -18,15 +18,9 @@
 //= require default.min
 //= require jquery.prettyPhoto
 
-// external js: isotope.pkgd.js
-
 function getHashFilter() {
-  // get filter=filterName
   var matches = location.hash.match(/#([^&]+)/i);
   var hashFilter = matches && matches[1];
-
-  console.log('entrou');
-  console.log(hashFilter);
 
   if (hashFilter == null) {
     return '*';
