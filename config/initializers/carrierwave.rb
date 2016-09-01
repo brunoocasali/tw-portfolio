@@ -23,6 +23,14 @@ end
 
 module CarrierWave
   module RMagick
+    def resize_to_fill_modified(width, height, gravity = ::Magick::CenterGravity)
+      manipulate! do |img|
+        img.crop_resized!(width, height, gravity) unless (img.columns <= width && img.rows <= height)
+        img = yield(img) if block_given?
+        img
+      end
+    end
+
     def quality(percentage)
       manipulate! do |img|
         img.write(current_path){ self.quality = percentage } unless img.quality == percentage

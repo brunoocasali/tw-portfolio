@@ -15,7 +15,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :medium do
-    process resize_to_fit: [350, 150]
+    process resize_to_fill_modified: [450, 350]
   end
 
   version :large do
@@ -25,17 +25,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   version :thumb do
     process resize_to_fit: [130, 110]
-  end
-
-  version :watermarked do
-    process :watermark
-  end
-
-  def watermark
-    manipulate! do |img|
-      logo = Magick::Image.read("#{Rails.root}/app/assets/images/utils/watermark.png").first
-      img = img.composite(logo, Magick::SouthEastGravity, 15, 5, Magick::OverCompositeOp)
-    end
   end
 
   def extension_white_list
