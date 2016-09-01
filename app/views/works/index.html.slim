@@ -1,6 +1,9 @@
 #works.content-section.text-center(style="padding-top: 150px;")
   h2.title-up Trabalhos
 
+  - unless @galleries.empty?
+    == render 'shared/links'
+
   .gallery-section
     .container.reset-this
       .gallery_holder
@@ -10,7 +13,3 @@
 
         - if @galleries.empty?
           p.pink Sem últimas galerias para exibir!
-
-  p.text-center
-    a.btn.btn-default href="/trabalhos"
-      span.network-name veja mais...

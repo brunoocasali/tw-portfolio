@@ -8,7 +8,7 @@ h2
 .row
   - @galleries.each do |gallery|
       .col-sm-3
-        = image_tag (gallery.cover.try(:filename).try(:url) || 'no_photo.jpg'), width: '100%'
+        = image_tag (gallery.cover.try(:filename).try(:url, :medium) || 'no_photo.jpg'), width: '100%'
         = link_to t('edit_btn'), edit_client_project_gallery_path(@client, @project, gallery)
         | &nbsp;
         = link_to t('destroy', m: tm(Gallery)), client_project_gallery_path(@client, @project, gallery), method: :delete

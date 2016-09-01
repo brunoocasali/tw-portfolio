@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
     @contact = Contact.new
-    @galleries = Project.launched.order(created_at: :desc).limit(4).map(&:galleries).flatten.select(&:show?)
+    @galleries = Project.launched.order(created_at: :desc).map(&:galleries).flatten.select(&:show?).take(4)
   end
 end
