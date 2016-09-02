@@ -58,5 +58,5 @@ Rails.application.routes.draw do
   end
 
   root 'home#index' # to: redirect('/users/sign_in')
-  match '*path', to: 'content_holding#check', via: :get
+  # match '*path', to: 'content_holding#check', via: :get
 end

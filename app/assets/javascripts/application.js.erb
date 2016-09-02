@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require isotope.pkgd.min
 //= require grayscale
 //= require angular
 //= require moment
@@ -27,7 +28,11 @@
 //= require angular_module
 //= require calendars
 //= require jquery.easing
-//= require isotope.pkgd.min
+//= require jquery.old
+//= require lemmon-slider
+//= require fullpage
+//= require default.min
+//= require jquery.prettyPhoto
 //= require_tree ./core
 //= require_self
 
@@ -71,7 +76,7 @@ var template = '<div class="dz-preview dz-image-preview">' +
                   '<div class="dz-size" data-dz-size></div>' +
                 '</div>' +
                 '<div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>' +
-                '<div class="dz-success-mark"><span>✔</span></div>' +
+                '<div class="dz-success-mark"><img src="http://icons.iconarchive.com/icons/custom-icon-design/mono-general-1/48/success-icon.png"/></div>' +
                 '<div class="dz-input">' +
                   '<input type="text" style="cursor: auto !important;" class="form-control input-sm dropzone-input js-caption" placeholder="Legenda" name="caption"/>' +
                   '<div class="checkbox to-left">' +
@@ -107,6 +112,10 @@ Dropzone.options.mediaDropzone = {
         thisDropzone.emit("complete", mockFile);
         thisDropzone.emit("success", mockFile, v);
       });
+    });
+
+    this.on("thumbnail", function(file, dataUrl) {
+        $('.dz-image').last().find('img').attr({width: '100%', height: '100%'});
     });
 
     this.on('removedfile', function(file) {
