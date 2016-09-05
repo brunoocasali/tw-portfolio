@@ -1,4 +1,3 @@
-- gallery.media.select(&:show?).each do |medium|
-    li(class="element-item grayscale #{'hide' unless medium.cover?} #{GalleryKind.key_for(gallery.kind)}" title="Galeria: #{gallery.name if medium.cover?}")
-      = link_to medium.filename_url(:large), class: 'prettyphoto', rel: "prettyPhoto[rel-#{gallery.id}]" do
-       = image_tag medium.filename_url(:medium), alt: medium.subtitle
+li(class="element-item grayscale #{'hide' unless medium.cover?} #{GalleryKind.key_for(gallery.kind)}" title="Galeria: #{gallery.name if medium.cover?}")
+  = link_to medium.filename_url(:large), class: 'prettyphoto', rel: "prettyPhoto[rel-#{gallery.id}]" do
+   = image_tag medium.filename_url(:medium), alt: medium.subtitle

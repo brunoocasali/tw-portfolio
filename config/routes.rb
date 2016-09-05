@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :project_galleries, path: 'ensaios', param: :code, only: :update do
-    post :unlock, on: :collection
+    collection do
+      post :unlock
+      get :unlock
+    end
 
     member do
       get :locked
@@ -57,6 +60,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'home#index' # to: redirect('/users/sign_in')
-  # match '*path', to: 'content_holding#check', via: :get
+  root 'home#index'
+  match ':code', to: 'project_galleries#index', via: :get
 end

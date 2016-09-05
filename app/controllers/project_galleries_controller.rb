@@ -6,13 +6,20 @@ class ProjectGalleriesController < ApplicationController
 
   skip_before_action :authenticate_user!
 
-  def index; end
+  def index
+    @media = @project.galleries.map(&:media).flatten
+    @width = if @media.count >= 250
+              '160px'
+             elsif @media.count > 50
+              '200px'
+             end
+  end
 
   def unlock
     if params.key? :project
       set_project(params[:project][:code])
 
-      redirect_to project_gallery_path(@project.code)
+      can_show_project?
     end
   end
 
@@ -26,7 +33,7 @@ class ProjectGalleriesController < ApplicationController
     @newsletter = @project.newsletters.build(newsletter_params)
 
     if @newsletter.save
-      redirect_to root_path, notice: 'Assim que tudo estiver preparado, você saberá em primeira mão!'
+      redirect_to works_path, notice: 'Assim que tudo estiver preparado, você saberá em primeira mão! Enquanto espera, porque não dar uma olhada no que eu já fiz?!'
     else
       flash.now[:alert] = 'Não foi possível adicionar a sua inscrição.'
 
@@ -37,11 +44,15 @@ class ProjectGalleriesController < ApplicationController
   private
 
   def set_project(code = params[:code])
-    @project = Project.find_by_code(params[:code])
+    @project = Project.find_by_code(code)
   end
 
   def can_show_project?
-    unless @project.launched?
+    code = params[:code] || params[:project][:code]
+
+    if @project.blank?
+      redirect_to unlock_project_galleries_path, warning: "Ops, não existe nenhum projeto com o código: #{code}"
+    elsif !@project.launched?
       flash.now[:warning] = 'Estamos trabalhando neste projeto no momento!'
 
       redirect_to locked_project_gallery_path(@project.code), warning: 'Desculpe! mas este projeto ainda não está disponível!'

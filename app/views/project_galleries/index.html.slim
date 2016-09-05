@@ -1,2 +1,14 @@
-h1 ProjectGalleries#index
-p essa tela irá listar apenas as fotos da galeria (todas no caso)
+h2.text-center
+  = @project.name
+
+.gallery-section
+  .container.reset-this
+    .gallery_holder
+      - @media.each do |medium|
+          ul.gallery_inner.v4
+            li(class="element-item grayscale" style="width: #{@width}")
+              = link_to medium.filename_url(:large), class: 'prettyphoto', rel: "prettyPhoto[no-rel]" do
+               = image_tag medium.filename_url(:medium), alt: medium.subtitle
+
+      - if @media.empty?
+        p.pink Este projeto ainda não possuí nenhuma galeria incluída!

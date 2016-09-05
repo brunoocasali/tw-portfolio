@@ -9,7 +9,8 @@
       .gallery_holder.grid
         - @galleries.each do |gallery|
             ul.gallery_inner.v4
-              == render partial: 'project_galleries/list', locals: { gallery: gallery }
+              - gallery.media.select(&:show?).each do |medium|
+                == render partial: 'project_galleries/list', locals: { gallery: gallery, medium: medium }
 
         .empty-msg.hide
           p.pink Sem últimas galerias para exibir!

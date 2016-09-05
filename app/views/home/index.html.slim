@@ -35,7 +35,8 @@ section#works.content-section.text-center
       .gallery_holder
         - @galleries.each do |gallery|
             ul.gallery_inner.v4
-              == render partial: 'project_galleries/list', locals: { gallery: gallery }
+              - gallery.media.select(&:show?).each do |medium|
+                == render partial: 'project_galleries/list', locals: { gallery: gallery, medium: medium }
 
         - if @galleries.empty?
           p.pink Sem últimas galerias para exibir!
