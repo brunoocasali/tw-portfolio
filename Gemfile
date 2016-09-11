@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 # core
-gem 'rails', '4.2.6'
+gem 'rails', '4.2.7.1'
 
 # infraestructure
 gem 'pg', '~> 0.15'
