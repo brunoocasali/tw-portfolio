@@ -1,16 +1,29 @@
 class BaseMailer < ApplicationMailer
-  def about_work(emails, project_id)
+  def about_work(project_id)
+    @project = Project.find(project_id)
+
+    emails = @project.newsletters.to_a << @project.owner
+
     mail(to: emails, subject: 'Tatiana Wacelkoski: Sobre Meu Trabalho')
   end
 
-  def almost_done(emails, project_id)
+  def almost_done(project_id)
+    @project = Project.find(project_id)
+
+    emails = @project.newsletters.to_a << @project.owner
+
     mail(to: emails, subject: 'Tatiana Wacelkoski: Está quase pronto!')
   end
 
-  def finished_project(emails, project_id)
-    mail(to: emails, subject: 'Tatiana Wacelkoski: Tudo pronto, veja as fotos aqui!')
-  end
+  def finished_project(project_id)
+    @project = Project.find(project_id)
 
-  # email para:
-  # - felicitando de aniversário... (automático, e precisa pegar a data de aniversário)
+    emails = @project.newsletters.to_a << @project.owner
+
+    emails.each do |m|
+      @contact = m
+
+      mail(to: m.email, subject: 'T. Wacelkoski Fotografias: Suas fotos estão prontas, confira!')
+    end
+  end
 end
