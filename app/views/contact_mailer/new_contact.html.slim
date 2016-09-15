@@ -1,10 +1,19 @@
-head
-  title Novo Contato pelo site: Tatiana Wacelkoski Fotografias
-  meta(content='text/html; charset=UTF-8' http-equiv='Content-Type')
+.container
+  h5(style='text-align: center;margin-bottom: 15px') Tatiana você acabou de receber uma mensagem:
 
-  style
-    | .container img.wide { max-width: 100%; max-height: 100%; height: auto; }
+  p.callout
+    strong Nome: &nbsp;
+    span
+      = @contact.name
 
-body
- .container
-   = mail_to @contact.email
+    br /
+
+    strong E-mail: &nbsp;
+    span
+      = mail_to @contact.email
+
+    br /
+
+    strong Mensagem: &nbsp;
+    span
+      = raw @contact.message
