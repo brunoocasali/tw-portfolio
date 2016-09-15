@@ -1,0 +1,22 @@
+- content_for :page_title do
+  | T. Wacelkoski: O projeto que você estava esperando, está quase pronto!
+
+hr.rule
+table
+  tr
+    td
+
+      = image_tag 'mailers/quase-la.jpg', alt: 'Keep Calm, estamos quase lá!'
+
+      p
+        | Olá&nbsp;
+        b
+          = "#{@contact.name}, "
+        | Esse email é só para avisá-lo(a) que as suas fotos estão ficando maravilhosas!
+
+        br /
+        br /
+
+        | Logo logo, estarão prontinhas, eu lhe avisarei por aqui quando tudo estiver pronto, apenas para lembrar este é o seu link:&nbsp;
+        strong
+          = link_to "https://wacelkoski.com/#{@project.code}", "https://wacelkoski.com/#{@project.code}", target: '_blank'
