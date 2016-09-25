@@ -1,3 +1,5 @@
+require 'zip'
+
 class ProjectGalleriesController < ApplicationController
   before_action :set_project
   before_action :can_show_project?, only: :index
@@ -8,8 +10,8 @@ class ProjectGalleriesController < ApplicationController
 
   def index
     @media = @project.galleries.map(&:media).flatten
-    @width = if @media.count >= 250
-              '160px'
+    @width = if @media.count >= 200
+              '135px'
              elsif @media.count > 50
               '200px'
              end
@@ -39,6 +41,19 @@ class ProjectGalleriesController < ApplicationController
 
       render :locked
     end
+  end
+
+  def download
+    files = @project.galleries.map(&:media).flatten
+
+    stringio = Zip::OutputStream.write_buffer do |zio|
+      files.each do |m|
+        zio.put_next_entry(m.filename.to_s.split('/').last)
+        zio.print(m.filename.read)
+      end
+    end
+
+    send_data stringio.string, filename: 'fotos.zip'
   end
 
   private

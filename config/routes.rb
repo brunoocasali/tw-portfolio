@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     member do
       get :locked
       get :index
+
+      get :download
     end
   end
 

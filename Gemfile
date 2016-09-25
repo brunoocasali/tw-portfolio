@@ -33,6 +33,7 @@ gem 'coffee-rails'
 gem 'momentjs-rails'
 gem 'fullcalendar-rails'
 gem 'dropzonejs-rails'
+gem 'rubyzip'
 
 # templating
 gem 'simple_form'
@@ -56,6 +57,7 @@ group :development, :test do
 
   gem 'dotenv'
   gem 'forgery'
+  gem 'derailed'
 end
 
 group :production do
