@@ -2,8 +2,8 @@ h2.text-center
   = @project.name
 
 .text-center
-  - @project.galleries.where.not(download_link: nil).each do |gallery|
-    = link_to "Baixar Galeria #{gallery.name}", gallery.download_link, target: '_blank'
+  - @project.galleries.where.not(download_link: '').each do |gallery|
+    = link_to raw("Baixar Galeria <b>#{gallery.name}</b>"), gallery.download_link, target: '_blank'
     br
 
 .gallery-section
