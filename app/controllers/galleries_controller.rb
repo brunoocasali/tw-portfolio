@@ -50,6 +50,8 @@ class GalleriesController < ApplicationController
   end
 
   def gallery_params
-    params.require(:gallery).permit(:name, :kind, :description, :show, media_attributes: [:gallery_id, :filename])
+    params.require(:gallery)
+      .permit(:name, :kind, :description, :show, :download_link,
+              media_attributes: [:gallery_id, :filename])
   end
 end

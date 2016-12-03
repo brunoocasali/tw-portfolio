@@ -2,16 +2,18 @@ h2.text-center
   = @project.name
 
 .text-center
-  = link_to 'baixar todas as fotos!', download_project_gallery_path
+  - @project.galleries.where.not(download_link: nil).each do |gallery|
+    = link_to "Baixar Galeria #{gallery.name}", gallery.download_link, target: '_blank'
+    br
 
 .gallery-section
   .container.reset-this
     .gallery_holder
       - @media.each do |medium|
-          ul.gallery_inner.v4
-            li(class="element-item grayscale" style="width: #{@width}")
-              = link_to medium.filename_url(:large), class: 'prettyphoto', rel: "prettyPhoto[no-rel]" do
-               = image_tag medium.filename_url(:medium), alt: medium.subtitle
+        ul.gallery_inner.v4
+          li(class="element-item grayscale" style="width: #{@width}")
+            = link_to medium.filename_url(:large), class: 'prettyphoto', rel: "prettyPhoto[no-rel]" do
+              = image_tag medium.filename_url(:medium), alt: medium.subtitle
 
       - if @media.empty?
         p.pink Este projeto ainda não possuí nenhuma galeria incluída!

@@ -46,6 +46,7 @@ gem 'enumerate_it'
 gem 'responders'
 gem 'brazilian-rails'
 gem 'jbuilder'
+gem 'validate_url'
 
 # uploading
 gem 'carrierwave'

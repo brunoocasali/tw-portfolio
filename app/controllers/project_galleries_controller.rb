@@ -43,19 +43,6 @@ class ProjectGalleriesController < ApplicationController
     end
   end
 
-  def download
-    files = @project.galleries.map(&:media).flatten
-
-    stringio = Zip::OutputStream.write_buffer do |zio|
-      files.each do |m|
-        zio.put_next_entry(m.filename.to_s.split('/').last)
-        zio.print(m.filename.read)
-      end
-    end
-
-    send_data stringio.string, filename: 'fotos.zip'
-  end
-
   private
 
   def set_project(code = params[:code])

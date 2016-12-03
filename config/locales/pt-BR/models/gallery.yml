@@ -11,3 +11,11 @@ pt-BR:
         description: Descrição
         kind: Tipo de Ensaio
         show: Destaque na home do site?
+        download_link: Link para Download
+
+    errors:
+      models:
+        gallery:
+          attributes:
+            download_link:
+              url: A URL escolhida é inválida
