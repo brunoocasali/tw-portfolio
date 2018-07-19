@@ -1,1 +1,1 @@
-# PHOTOGRAPHY PORTFÓLIO - T. Wacelkoski :camera:
+# PHOTOGRAPHY PORTFÓLIO - :camera:
